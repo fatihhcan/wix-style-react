@@ -9,8 +9,8 @@ Please create a pull request with the solution if it worth sharing.
 
 - [Usage issues](#%f0%9f%91%a8%e2%80%8d%f0%9f%8f%ab-usage-issues)
   - [How should I import a component properly?](#how-should-i-import-a-component-properly)
-  - [I'm not sure which component to use to implement the desired spec](#I'm-not-sure-which-component-to-use-to-implement-the-desired-spec)
-  - [The component I'm using does not look or behave as expected](#The-component-I'm-using-does-not-look-or-behave-as-expected)
+  - [I'm not sure which component to use to implement the desired spec](#i'm-not-sure-which-component-to-use-to-implement-the-desired-spec)
+  - [The component I'm using does not look or behave as expected](#the-component-i'm-using-does-not-look-or-behave-as-expected)
   - [Making Server-Side-Rendering (SSR) work](#making-server-side-rendering-ssr-work)
   - [Components do not have styling in the first render of Server-Side-Rendering (SSR)](#components-do-not-have-styling-in-the-first-render-of-server-side-rendering-ssr)
   - [My PR was merged, why can't I see it in my project?](#my-pr-was-merged-why-cant-i-see-it-in-my-project)
