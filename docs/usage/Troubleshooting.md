@@ -1,6 +1,6 @@
 # What should I do when I get in trouble?
 
-In this doc we will share how we troubleshoot issues that we're experiencing when we struggle with a component or a testkit usage:
+In this doc we will share how we troubleshoot issues that we experience when we struggle with a component or a testkit usage:
 
 1. Check whether there is an example that fits your scenario in the [storybook](https://www.wix-style-react.com).
 2. Check our [Cheetsheet](https://www.wix-style-react.com/?path=/story/introduction-cheatsheet--components-cheatsheet) which includes a view of most of the library components inventory and links to the relevant documentation pages.
