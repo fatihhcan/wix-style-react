@@ -1,17 +1,22 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: D40, B05, D80, D55, D10, B10;
+  -st-named: D40, B05, D80, D55, D10, B10, A1, B40;
 }
+:import {
+  -st-from: "../Foundation/stylable/mixins/calc_rgba";
+  -st-default: calc_rgba;
+}
+
 
 
 :vars {
   canvas-top-gap: 6px;
   canvas-bottom-gap: 29px;
-  datasetBg: rgba(48, 141, 221, .15);
-  pointBorderColor: value(B10);
-  datasetLineColor: value(B05);
+  datasetBg: calc_rgba(value(A1), 0.06);
+  pointBorderColor: value(A1);
+  datasetLineColor: value(A1);
   pointHoverBackgroundColor: value(D80);
-  pointHoverBorderColor: value(B05);
+  pointHoverBorderColor: value(A1);
   gridLineZeroLineColor: value(D40);
   gridLineFontColor: value(D55);
   tooltipBg: value(D10);
