@@ -181,3 +181,4 @@ export { default as TableListItem } from './TableListItem';
 export { default as TestimonialList } from './TestimonialList';
 export { default as FeatureList } from './FeatureList';
 export { default as MarketingPageLayoutContent } from './MarketingPageLayoutContent';
+export { default as StackedBarChart } from './StackedBarChart';

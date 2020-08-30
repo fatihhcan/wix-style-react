@@ -392,6 +392,9 @@
   "SortableList": {
     "path": "src/SortableList"
   },
+  "StackedBarChart": {
+    "path": "src/StackedBarChart"
+  },
   "StarsRatingBar": {
     "path": "src/StarsRatingBar"
   },
