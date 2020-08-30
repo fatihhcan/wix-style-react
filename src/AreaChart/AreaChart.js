@@ -13,7 +13,7 @@ import {
   Y_AXES_TICKS_PROPS,
 } from './chartOptions';
 
-import { classes, stVars } from './AreaChart.st.css';
+import { st, classes, stVars } from './AreaChart.st.css';
 
 const WEEK_DAYS = 7;
 
@@ -51,15 +51,17 @@ class AreaChart extends React.PureComponent {
   };
 
   render() {
-    const { data, chartHeight, xTickGap, tooltipContent } = this.props;
-    const labels = data.map(i => i.label);
-    const dataset = data.map(i => i.value);
+    const { data, xTickGap, tooltipContent, dataHook, className } = this.props;
+    const labels = (data || []).map(i => i.label);
+    const dataset = (data || []).map(i => i.value);
 
     return (
-      <section className={classes.lineChart}>
+      <section
+        className={st(classes.lineChart, className)}
+        data-hook={dataHook}
+      >
         <Line
           redraw
-          // height={chartHeight}
           data={{
             labels,
             datasets: [
