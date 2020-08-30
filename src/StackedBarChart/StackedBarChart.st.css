@@ -1,6 +1,6 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: D55;
+  -st-named: D55, F00;
 }
 
 .root {
@@ -38,4 +38,10 @@
 
 .tooltipInner {
   width: 50px;
+  background: none;
+  border: none;
+}
+
+.tooltipInner:focus {
+  box-shadow: 0 0 0 3px value(F00);
 }

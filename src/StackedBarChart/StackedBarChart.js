@@ -83,11 +83,11 @@ class StackedBarChart extends React.PureComponent {
   }
 
   render() {
-    const { tooltipTemplate, className } = this.props;
+    const { tooltipTemplate, className, dataHook } = this.props;
     const { data, x, y } = this.state;
 
     return (
-      <div className={st(classes.root, {}, className)}>
+      <div data-hook={dataHook} className={st(classes.root, {}, className)}>
         {/* Chart */}
         <svg ref={this.chart} width={this.width} height={this.height}>
           {/* Axis */}
@@ -147,7 +147,7 @@ class StackedBarChart extends React.PureComponent {
                 content={tooltipTemplate(d)}
                 dataHook={dataHooks.tooltip}
               >
-                <div
+                <button
                   className={classes.tooltipInner}
                   style={{ height: `${this.chartHeight - y(d.sum)}px` }}
                 />
