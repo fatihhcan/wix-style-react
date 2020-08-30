@@ -180,6 +180,8 @@ StackedBarChart.propTypes = {
   tooltipTemplate: PropTypes.func,
 };
 
-StackedBarChart.defaultProps = {};
+StackedBarChart.defaultProps = {
+  data: [],
+};
 
 export default StackedBarChart;
