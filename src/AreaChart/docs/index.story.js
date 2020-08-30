@@ -32,17 +32,29 @@ export default {
   componentProps: {
     data: [
       {
-        value: 1170,
+        value: 5678,
         label: '12/9',
       },
       {
+        value: 1170,
+        label: '13/9',
+      },
+      {
+        value: 4678,
+        label: '14/9',
+      },
+      {
         value: 2030,
-        label: '11/8',
+        label: '15/9',
       },
       {
         value: 3000,
-        label: 'hi',
+        label: '16/9',
       },
+    ],
+    tooltipContent: (item, index) => [
+      `${item.label}`,
+      `${item.value}$ from your orders`,
     ],
   },
 
@@ -58,16 +70,24 @@ export default {
         <AreaChart
           data={[
             {
-              value: 1170,
+              value: 5678,
               label: '12/9',
             },
             {
+              value: 1170,
+              label: '13/9',
+            },
+            {
+              value: 4678,
+              label: '14/9',
+            },
+            {
               value: 2030,
-              label: '11/8',
+              label: '15/9',
             },
             {
               value: 3000,
-              label: 'hi',
+              label: '16/9',
             },
           ]}
           tooltipContent={(item, index) => {
