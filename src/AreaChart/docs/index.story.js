@@ -30,7 +30,20 @@ export default {
   componentPath: '..',
 
   componentProps: {
-    buttonText: 'Hello World!',
+    data: [
+      {
+        value: 1170,
+        label: '12/9',
+      },
+      {
+        value: 2030,
+        label: '11/8',
+      },
+      {
+        value: 3000,
+        label: 'hi',
+      },
+    ],
   },
 
   exampleProps: {
@@ -41,7 +54,27 @@ export default {
   sections: [
     header({
       sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${AreaChart.displayName}/`,
-      component: <AreaChart buttonText="Click me!" />,
+      component: (
+        <AreaChart
+          data={[
+            {
+              value: 1170,
+              label: '12/9',
+            },
+            {
+              value: 2030,
+              label: '11/8',
+            },
+            {
+              value: 3000,
+              label: 'hi',
+            },
+          ]}
+          tooltipContent={(item, index) => {
+            return [`${item.label}`, `${item.value}$ from your orders`];
+          }}
+        />
+      ),
     }),
 
     tabs([
@@ -63,13 +96,44 @@ export default {
           example({
             title: 'Simple Usage',
             text: 'A simple example with compact preview',
-            source: '<AreaChart buttonText="Hello World!"/>',
+            source: `<AreaChart  data={[
+            {
+              value: 1170,
+              label: "12/9",
+            },
+            {
+              value: 2030,
+              label: "11/8",
+            },
+            {
+              value: 3000,
+              label: "hi",
+            },
+          ]}
+          tooltipContent={(item, index) =>  index}
+          />`,
           }),
 
           code({
             title: 'Full Interactive Preview',
             description: 'A non compact version of same code example as above',
-            source: '<AreaChart buttonText="Hello World!"/>',
+            source: `<AreaChart  data={[
+            {
+              value: 1170,
+              label: "12/9",
+            },
+            {
+              value: 2030,
+              label: "11/8",
+            },
+            {
+              value: 3000,
+              label: "hi",
+            },
+            
+          ]}           
+          tooltipContent={(item, index) =>  index}
+          />`,
           }),
         ],
       }),

@@ -1,22 +1,45 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: G30,R30;
+  -st-named: D40, B05, D80, D55, D10, B10;
 }
 
-.root {
-  -st-states: odd, even;
-  text-align: center;
+
+:vars {
+  canvas-top-gap: 6px;
+  canvas-bottom-gap: 29px;
+  datasetBg: rgba(48, 141, 221, .15);
+  pointBorderColor: value(B10);
+  datasetLineColor: value(B05);
+  pointHoverBackgroundColor: value(D80);
+  pointHoverBorderColor: value(B05);
+  gridLineZeroLineColor: value(D40);
+  gridLineFontColor: value(D55);
+  tooltipBg: value(D10);
 }
 
-.root:even .number {
-  background: value(G30);
+.lineChart {
+  position: relative;
+  z-index: 0;
 }
 
-.root:odd .number {
-  background: value(R30);
+.lineChartCursor {
+  top: value(canvas-top-gap);
+  left: 50%;
+
+  width: 1px;
+  height: calc(100% - value(canvas-bottom-gap));
+
+  transition: opacity .1s ease-in-out;
+
+  opacity: 0;
+
+@extend .lineChartAxis;
+  will-change: opacity, left;
 }
 
-.button {
-  display: flex;
-  justify-content: space-evenly;
+.lineChartAxis {
+  position: absolute;
+  z-index: -1;
+
+  background: value(D40);
 }
