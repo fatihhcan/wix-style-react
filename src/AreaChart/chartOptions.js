@@ -10,6 +10,7 @@ export const DATASET_PROPS = {
   lineTension: 0.12,
   pointBackgroundColor: 'transparent',
   pointHitRadius: 1,
+  pointHoverBorderWidth: 2,
 };
 
 export const OPTIONS_PROPS = {
@@ -36,7 +37,6 @@ export const GRIDLINE_PROPS = {
 
 export const Y_AXES_TICKS_PROPS = {
   beginAtZero: true,
-  maxTicksLimit: 5,
   labelOffset: 4,
   padding: 5,
 };

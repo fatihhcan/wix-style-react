@@ -13,7 +13,8 @@
   canvas-top-gap: 6px;
   canvas-bottom-gap: 29px;
   datasetBg: calc_rgba(value(A1), 0.06);
-  pointBorderColor: value(A1);
+  pointBorderColor: calc_rgba(value(A1), 0);
+  pointBackgroundColor: calc_rgba(value(A1), 0);
   datasetLineColor: value(A1);
   pointHoverBackgroundColor: value(D80);
   pointHoverBorderColor: value(A1);
