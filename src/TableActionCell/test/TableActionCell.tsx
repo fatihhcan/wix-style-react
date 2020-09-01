@@ -15,11 +15,13 @@ function tableActionCellWithAllProps() {
       dataHook="hook"
       numOfVisibleSecondaryActions={2}
       popoverMenuProps={{}}
+      popoverMenuButtonSize="medium"
       primaryAction={{
         disabled: true,
         onClick: () => {},
         text: 'text',
-        theme: 'fullblue',
+        skin: 'standard',
+        size: 'medium',
       }}
       secondaryActions={[
         {
@@ -33,6 +35,7 @@ function tableActionCellWithAllProps() {
           icon: <div />,
           onClick: () => {},
           text: 'text',
+          size: 'medium',
         },
       ]}
     />

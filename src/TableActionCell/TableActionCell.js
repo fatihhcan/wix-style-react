@@ -12,11 +12,12 @@ import { classes } from './TableActionCell.st.css';
 import { TooltipCommonProps } from '../common/PropTypes/TooltipCommon';
 
 /* eslint-disable react/prop-types */
-function renderPrimaryAction({ text, skin, onClick, disabled }) {
+function renderPrimaryAction({ text, skin, onClick, disabled, size }) {
   return (
     <Button
       disabled={disabled}
       skin={skin}
+      size={size || 'medium'}
       onClick={event => {
         onClick();
 
@@ -41,6 +42,7 @@ function renderVisibleActions(actions) {
         disabled,
         disabledDescription,
         tooltipProps,
+        size,
       },
       index,
     ) => (
@@ -60,6 +62,7 @@ function renderVisibleActions(actions) {
             onClick();
             event.stopPropagation();
           }}
+          size={size || 'medium'}
         >
           {icon}
         </IconButton>
@@ -68,7 +71,7 @@ function renderVisibleActions(actions) {
   );
 }
 
-function renderHiddenActions(actions, popoverMenuProps) {
+function renderHiddenActions(actions, popoverMenuProps, popoverMenuButtonSize) {
   return (
     <PopoverMenu
       dataHook={dataHooks.tableActionCellPopoverMenu}
@@ -76,7 +79,11 @@ function renderHiddenActions(actions, popoverMenuProps) {
       placement="top"
       textSize="small"
       triggerElement={
-        <IconButton skin="inverted" dataHook={dataHooks.triggerElement}>
+        <IconButton
+          skin="inverted"
+          dataHook={dataHooks.triggerElement}
+          size={popoverMenuButtonSize || 'medium'}
+        >
           <More />
         </IconButton>
       }
@@ -117,6 +124,7 @@ const TableActionCell = props => {
     numOfVisibleSecondaryActions,
     alwaysShowSecondaryActions,
     popoverMenuProps,
+    popoverMenuButtonSize,
   } = props;
 
   const visibleActions = secondaryActions.slice(
@@ -148,7 +156,11 @@ const TableActionCell = props => {
       {hiddenActions.length > 0 && (
         <div onClick={e => e.stopPropagation()} className={classes.popoverMenu}>
           <HoverSlot display="always">
-            {renderHiddenActions(hiddenActions, popoverMenuProps)}
+            {renderHiddenActions(
+              hiddenActions,
+              popoverMenuProps,
+              popoverMenuButtonSize,
+            )}
           </HoverSlot>
         </div>
       )}
@@ -175,7 +187,8 @@ TableActionCell.propTypes = {
 
   /**
    * An object containing the primary action properties: `text` is the action
-   * text , `theme` is the button theme (can be `whiteblue` or `fullblue`),
+   * text , `skin` is the button theme (can be `standard` or `inverted`),
+   * `size` is the button size (can be `small` or `medium`)
    * `onClick` is the callback function for the action, whose signature is
    * `onClick(rowData, rowNum)`.
    * `disabled` is an optional prop for the primary action to be disabled
@@ -183,6 +196,7 @@ TableActionCell.propTypes = {
   primaryAction: PropTypes.shape({
     text: PropTypes.string.isRequired,
     skin: PropTypes.oneOf(['standard', 'inverted']),
+    size: PropTypes.oneOf(['small', 'medium']),
     onClick: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
   }),
@@ -197,6 +211,7 @@ TableActionCell.propTypes = {
    * 'disabledDescription' is an optional prop that indicates what string to display in tooltip when action is visible and disabled (if none is provided, the text prop is used. if empty string is provided, no tooltip will be displayed)
    * 'tooltipProps' is an optional prop for controlling the tooltip shown when the action is visible
    * 'divider' is an optional prop to display a divider between the action items
+   * 'size' is an optional prop to change the size of the icon button that is visible
    */
   secondaryActions: PropTypes.arrayOf(
     PropTypes.shape({
@@ -208,6 +223,7 @@ TableActionCell.propTypes = {
       disabledDescription: PropTypes.string,
       tooltipProps: PropTypes.shape(TooltipCommonProps),
       divider: PropTypes.bool,
+      size: PropTypes.oneOf(['small', 'medium']),
     }),
   ),
 
@@ -219,6 +235,9 @@ TableActionCell.propTypes = {
 
   /** Props being passed to the secondary actions' <PopoverMenu/> */
   popoverMenuProps: PropTypes.shape(PopoverMenu.propTypes),
+
+  /** Popover menu button size */
+  popoverMenuButtonSize: PropTypes.oneOf(['small', 'medium']),
 };
 
 TableActionCell.defaultProps = {

@@ -8,6 +8,7 @@ type CommonTableActionCellProps = {
   secondaryActions?: TableActionCellSecondaryAction[];
   numOfVisibleSecondaryActions?: number;
   alwaysShowSecondaryActions?: boolean;
+  popoverMenuButtonSize?: 'small' | 'medium';
 };
 
 export type TableActionCellProps = CommonTableActionCellProps & {
@@ -20,7 +21,8 @@ export default TableActionCell;
 export type TableActionCellPrimaryAction = {
   text: string;
   onClick: () => void;
-  theme?: 'whiteblue' | 'fullblue';
+  skin?: 'standard' | 'inverted';
+  size?: 'small' | 'medium';
   disabled?: boolean;
 };
 
@@ -30,6 +32,7 @@ export type TableActionCellSecondaryAction = {
   onClick: () => void;
   disabled?: boolean;
   disabledDescription?: string;
-  tooltipProps?: TooltipCommonProps,
+  tooltipProps?: TooltipCommonProps;
   dataHook?: string;
+  size?: 'small' | 'medium';
 };
