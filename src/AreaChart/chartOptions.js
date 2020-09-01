@@ -52,8 +52,7 @@ export const TOOLTIP_PROPS = {
   yAlign: 'bottom',
   displayColors: false,
   bodyFontSize: 14,
-  bodyFontFamily:
-    '"HelveticaNeueW01-45Ligh","HelveticaNeueW02-45Ligh","HelveticaNeueW10-45Ligh","Helvetica Neue",Helvetica,Arial,meiryo,"hiragino kaku gothic pro",sans-serif',
+  bodyFontFamily: 'Madefor',
   bodySpacing: 4,
   cornerRadius: 8,
 };
