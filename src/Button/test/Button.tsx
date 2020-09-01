@@ -29,7 +29,7 @@ function ButtonWithAllProps() {
       tooltipProps={{
         appendTo: 'scrollParent',
         flip: true,
-        moveBy: { x: 999, y: 1234 },
+        maxWidth: '700px',
       }}
     />
   );
