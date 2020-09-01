@@ -3,6 +3,7 @@ const javascriptFiles = [
   ['AddItem.bundle.min.js', 44],
   ['Animate.bundle.min.js', 5],
   ['AnnouncementModalLayout.bundle.min.js', 48],
+  ['AreaChart.bundle.min.js', 84],
   ['AudioPlayer.bundle.min.js', 53],
   ['AutoComplete.bundle.min.js', 71],
   ['AutoCompleteWithLabel.bundle.min.js', 69],
@@ -151,7 +152,6 @@ const javascriptFiles = [
   ['VerticalTabs.bundle.min.js', 38],
   ['VerticalTabsItem.bundle.min.js', 38],
   ['WarningIndicator.bundle.min.js', 40],
-  ['AreaChart.bundle.min.js', 10],
 ];
 
 const cssFiles = [
