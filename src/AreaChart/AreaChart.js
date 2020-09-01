@@ -146,9 +146,6 @@ AreaChart.propTypes = {
 
   /** A css class to be applied to the component's root element */
   className: PropTypes.string,
-
-  /** Text for the button */
-  buttonText: PropTypes.string,
 };
 
 AreaChart.defaultProps = {
