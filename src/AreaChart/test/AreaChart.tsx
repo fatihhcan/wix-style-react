@@ -15,7 +15,6 @@ function areaChartWithAllProps() {
     <AreaChart
       dataHook="dataHook"
       className="className"
-      buttonText="buttonText"
     />
   );
 }
