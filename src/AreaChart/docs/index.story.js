@@ -33,23 +33,55 @@ export default {
     data: [
       {
         value: 5675,
-        label: '12/9',
+        label: 'April',
       },
       {
         value: 1170,
-        label: '13/9',
+        label: 'May',
       },
       {
         value: 4678,
-        label: '14/9',
-      },
-      {
-        value: 2030,
         label: '15/9',
       },
       {
+        value: 2030,
+        label: '22/9',
+      },
+      {
         value: 3000,
-        label: '16/9',
+        label: '26/9',
+      },
+      {
+        value: 3000,
+        label: '2/10',
+      },
+      {
+        value: 5932,
+        label: '9/10',
+      },
+      {
+        value: 1256,
+        label: '16/10',
+      },
+      {
+        value: 2324,
+        label: '23/10',
+      },
+      {
+        value: 234,
+        label: '30/10',
+      },
+      {
+        value: 223,
+        label: '6/11',
+      },
+      {
+        value: 992,
+        label: '13/11',
+      },
+      {
+        value: 3684,
+        label: '20/11',
       },
     ],
     tooltipContent: (item, index) => [
