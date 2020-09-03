@@ -70,7 +70,7 @@ export default {
         <AreaChart
           data={[
             {
-              value: 5678,
+              value: 5698,
               label: '12/9',
             },
             {
