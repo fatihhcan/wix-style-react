@@ -15,8 +15,6 @@ import {
 
 import { st, classes, stVars } from './AreaChart.st.css';
 
-const WEEK_DAYS = 7;
-
 /** An area chart is a way of plotting data points on a line. Often, it is used to show trend data */
 class AreaChart extends React.PureComponent {
   cursorLine = null;
@@ -149,8 +147,7 @@ AreaChart.propTypes = {
 };
 
 AreaChart.defaultProps = {
-  chartHeight: 226,
-  xTickGap: WEEK_DAYS,
+  xTickGap: 1,
 };
 
 export default AreaChart;
