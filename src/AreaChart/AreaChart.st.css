@@ -31,15 +31,13 @@
 .lineChartCursor {
   top: value(canvas-top-gap);
   left: 50%;
-
   width: 1px;
   height: calc(100% - value(canvas-bottom-gap));
-
   transition: opacity .1s ease-in-out;
-
   opacity: 0;
-
-@extend .lineChartAxis;
+  position: absolute;
+  z-index: -1;
+  background: value(D40);
   will-change: opacity, left;
 }
 
