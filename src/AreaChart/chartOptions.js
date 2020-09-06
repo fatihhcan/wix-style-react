@@ -22,6 +22,9 @@ export const OPTIONS_PROPS = {
   },
   legend: {
     display: false,
+    labels: {
+      family: 'Madefor',
+    },
   },
 };
 

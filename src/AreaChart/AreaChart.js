@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Line } from 'react-chartjs-2';
+import { Line, defaults } from 'react-chartjs-2';
 import throttle from 'lodash/throttle';
 
 import { formatToCompactNumber } from './utils/numberFormatters';
@@ -14,6 +14,8 @@ import {
 } from './chartOptions';
 
 import { st, classes, stVars } from './AreaChart.st.css';
+
+defaults.global.defaultFontFamily = 'Madefor';
 
 /** An area chart is a way of plotting data points on a line. Often, it is used to show trend data */
 class AreaChart extends React.PureComponent {
@@ -74,7 +76,7 @@ class AreaChart extends React.PureComponent {
             scales: {
               xAxes: [
                 {
-                  gridLines: { ...GRIDLINE_PROPS, tickMarkLength: 5 },
+                  gridLines: { ...GRIDLINE_PROPS, tickMarkLength: 0 },
                   ticks: {
                     padding: 5,
                     fontColor: stVars.gridLineZeroLineColor,

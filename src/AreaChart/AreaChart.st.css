@@ -11,7 +11,7 @@
 
 :vars {
   canvas-top-gap: 6px;
-  canvas-bottom-gap: 29px;
+  canvas-bottom-gap: 31px;
   datasetBg: calc_rgba(value(A1), 0.06);
   pointBorderColor: calc_rgba(value(A1), 0);
   pointBackgroundColor: calc_rgba(value(A1), 0);
