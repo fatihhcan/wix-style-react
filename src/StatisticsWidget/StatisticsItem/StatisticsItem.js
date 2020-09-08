@@ -5,6 +5,7 @@ import SortByArrowDown from 'wix-ui-icons-common/system/SortByArrowDown';
 import InfoCircleSmall from 'wix-ui-icons-common/InfoCircleSmall';
 
 import Heading from '../../Heading';
+import Text from '../../Text';
 import Tooltip from '../../Tooltip';
 import Badge from '../../Badge';
 import AdaptiveHeading from '../../utils/AdaptiveHeading';
@@ -24,6 +25,7 @@ class StatisticsItem extends React.PureComponent {
   static displayName = 'StatisticsItem';
   static defaultProps = {
     size: 'large',
+    alignItems: 'center',
   };
 
   _getFocusableProps = () => {
@@ -58,16 +60,22 @@ class StatisticsItem extends React.PureComponent {
     />
   );
 
-  _renderDescription = (description, subtitleContentInfo) => {
+  _renderDescription = (description, subtitleContentInfo, size, alignItems) => {
     if (!description) {
       return null;
     }
 
     return (
-      <div className={classes.description}>
-        <Heading ellipsis dataHook={DataHooks.description} appearance="H5">
-          {description}
-        </Heading>
+      <div className={st(classes.description, { alignItems })}>
+        {size === SIZES.tiny ? (
+          <Text size="small" secondary>
+            {description}
+          </Text>
+        ) : (
+          <Heading ellipsis dataHook={DataHooks.description} appearance="H5">
+            {description}
+          </Heading>
+        )}
         {subtitleContentInfo && (
           <Tooltip
             textAlign="start"
@@ -142,6 +150,7 @@ class StatisticsItem extends React.PureComponent {
       focusableOnBlur,
       className,
       size,
+      alignItems,
       ...rest
     } = this.props;
 
@@ -153,7 +162,7 @@ class StatisticsItem extends React.PureComponent {
       ...rest,
       className: st(
         classes.item,
-        { clickable: !!onClick, size },
+        { clickable: !!onClick, size, alignItems },
         this.props.className,
       ),
     };
@@ -161,7 +170,12 @@ class StatisticsItem extends React.PureComponent {
     return (
       <div {...attrs}>
         {this._renderValue(value, valueInShort, size)}
-        {this._renderDescription(description, descriptionInfo)}
+        {this._renderDescription(
+          description,
+          descriptionInfo,
+          size,
+          alignItems,
+        )}
         {this._renderPercents(percentage, invertedPercentage)}
         {children}
       </div>

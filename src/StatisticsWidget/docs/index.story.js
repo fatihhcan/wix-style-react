@@ -32,6 +32,7 @@ import onClick from '!raw-loader!./examples/onClick';
 import Card from '!raw-loader!./examples/Card';
 import InteractiveCard from '!raw-loader!./examples/InteractiveCard';
 import TinyValues from '!raw-loader!./examples/TinyValues';
+import AlignItems from '!raw-loader!./examples/AlignItems';
 
 const code = config => baseCode({ components: allComponents, ...config });
 const example = config => baseExample({ components: allComponents, ...config });
@@ -84,7 +85,7 @@ export default {
             autoRender: false,
             title: 'descriptions',
             description:
-              'Should be short, contains an explanation of the current stat.',
+              'Should be short, contains an explanation of the current statistic.',
             source: Descriptions,
           }),
 
@@ -109,8 +110,17 @@ export default {
             autoRender: false,
             title: 'Tiny Values',
             description:
-              'Uses a bold Text component instead of a Heading to display the values',
+              'Uses a bold Text component instead of a Heading to display the values and the descriptions.',
             source: TinyValues,
+          }),
+
+          example({
+            compact: true,
+            autoRender: false,
+            title: 'Align items to start',
+            description:
+              'There is a possibility to display the children items aligned to a specific side.',
+            source: AlignItems,
           }),
 
           example({
