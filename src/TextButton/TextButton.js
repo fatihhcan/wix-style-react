@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import { ButtonNext } from 'wix-ui-core/dist/src/components/button-next';
+import Ellipsis from '../common/Ellipsis';
+import { TooltipCommonProps } from '../common/PropTypes/TooltipCommon';
 import PropTypes from 'prop-types';
 import { generateDataAttr } from '../utils/generateDataAttr';
 
@@ -39,6 +41,12 @@ class TextButton extends PureComponent {
     dataHook: PropTypes.string,
     /** Stretches text button to its container width */
     fluid: PropTypes.bool,
+    /** should the text get ellipsized with tooltip, or should it get broken into lines when it reaches the end of its container */
+    ellipsis: PropTypes.bool,
+    /** True by default, set it to false in order to show ellipsis without a tooltip. */
+    showTooltip: PropTypes.bool,
+    /** Props that modify the Tooltip created from text ellipsis */
+    tooltipProps: PropTypes.shape(TooltipCommonProps),
   };
 
   static defaultProps = {
@@ -48,6 +56,7 @@ class TextButton extends PureComponent {
     size: 'medium',
     disabled: false,
     fluid: false,
+    tooltipProps: {},
   };
 
   render() {
@@ -60,6 +69,9 @@ class TextButton extends PureComponent {
       className,
       dataHook,
       fluid,
+      ellipsis,
+      showTooltip,
+      tooltipProps,
       ...rest
     } = this.props;
 
@@ -74,12 +86,21 @@ class TextButton extends PureComponent {
         ])}
         className={st(
           classes.root,
-          { skin, underline, weight, size, fluid },
+          { skin, underline, weight, size, fluid, ellipsis },
           className,
         )}
         data-hook={dataHook}
       >
-        {children}
+        <Ellipsis
+          ellipsis={ellipsis}
+          showTooltip={showTooltip}
+          {...tooltipProps}
+          render={({ ref, ellipsisClasses }) => (
+            <div ref={ref} className={ellipsisClasses()}>
+              {children}
+            </div>
+          )}
+        />
       </ButtonNext>
     );
   }
