@@ -1,12 +1,18 @@
 import { dataHooks } from '../constants';
+import { findByHook } from '../../../test/utils/unidriver';
+import { tableActionCellUniDriverFactory as publicDriverFactory } from '../TableActionCell.uni.driver';
 
-export const TableActionCellPrivateDriverFactory = base => {
+export const tableActionCellPrivateUniDriverFactory = base => {
+  const getPrimaryActionPlaceholder = () =>
+    findByHook(base, dataHooks.tableActionCellPlaceholder);
+
   return {
-    // TODO: This unidriver was created mainly for the visual tests, however,
-    // we do need to migrate to a public unidriver at some point
-    // ...publicDriver,
+    ...publicDriverFactory(base),
+
+    /** Whether the primary action placeholder exists */
+    primaryActionPlaceholderExists: () => !!getPrimaryActionPlaceholder(),
 
     clickSecondaryActions: () =>
-      base.$(`[data-hook="${dataHooks.triggerElement}"]`).click(),
+      findByHook(base, dataHooks.triggerElement).click(),
   };
 };

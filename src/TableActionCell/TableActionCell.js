@@ -17,9 +17,9 @@ function renderPrimaryAction({ text, skin, onClick, disabled }) {
     <Button
       disabled={disabled}
       skin={skin}
+      dataHook={dataHooks.tableActionCellPrimaryAction}
       onClick={event => {
         onClick();
-
         // Making sure we don't also trigger onRowClick
         event.stopPropagation();
       }}
@@ -128,10 +128,7 @@ const TableActionCell = props => {
   return (
     <span data-hook={dataHook} className={classes.root}>
       {primaryAction && (
-        <HoverSlot
-          display="onHover"
-          data-hook={dataHooks.tableActionCellPrimaryAction}
-        >
+        <HoverSlot display="onHover">
           {renderPrimaryAction(primaryAction)}
         </HoverSlot>
       )}
