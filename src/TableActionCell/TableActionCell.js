@@ -44,26 +44,29 @@ function renderVisibleActions(actions) {
       },
       index,
     ) => (
-      <Tooltip
-        key={index}
-        dataHook={dataHook || dataHooks.tableActionCellVisibleActionTooltip}
-        disabled={disabled && disabledDescription === ''}
-        content={
-          disabled && Boolean(disabledDescription) ? disabledDescription : text
-        }
-        {...tooltipProps}
-      >
-        <IconButton
-          skin="inverted"
-          disabled={disabled}
-          onClick={event => {
-            onClick();
-            event.stopPropagation();
-          }}
+      <div key={index} data-hook={dataHooks.tableActionCellVisibleAction}>
+        <Tooltip
+          dataHook={dataHook || dataHooks.tableActionCellVisibleActionTooltip}
+          disabled={disabled && disabledDescription === ''}
+          content={
+            disabled && Boolean(disabledDescription)
+              ? disabledDescription
+              : text
+          }
+          {...tooltipProps}
         >
-          {icon}
-        </IconButton>
-      </Tooltip>
+          <IconButton
+            skin="inverted"
+            disabled={disabled}
+            onClick={event => {
+              onClick();
+              event.stopPropagation();
+            }}
+          >
+            {icon}
+          </IconButton>
+        </Tooltip>
+      </div>
     ),
   );
 }
@@ -134,10 +137,7 @@ const TableActionCell = props => {
       )}
 
       {visibleActions.length > 0 && (
-        <HoverSlot
-          display={alwaysShowSecondaryActions ? 'always' : 'onHover'}
-          data-hook={dataHooks.tableActionCellVisibleActions}
-        >
+        <HoverSlot display={alwaysShowSecondaryActions ? 'always' : 'onHover'}>
           {renderVisibleActions(visibleActions)}
         </HoverSlot>
       )}

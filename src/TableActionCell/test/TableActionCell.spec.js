@@ -119,35 +119,35 @@ describe('Table Action Cell', () => {
       expect(await driver.primaryActionPlaceholderExists()).toBe(false);
     });
 
-    // it('should put visible secondary actions in the cell', async () => {
-    //   const { driver } = render(
-    //     <TableActionCell
-    //       {...primaryActionProps()}
-    //       {...secondaryActionsProps({
-    //         actionDataHooks: [undefined, 'data-hook-for-1'],
-    //       })}
-    //     />,
-    //   );
-    //
-    //   expect(await driver.getVisibleActionsCount()).toEqual(2);
-    //
-    //   expect(
-    //     await driver.getVisibleActionButtonDriver(0).getButtonTextContent(),
-    //   ).toEqual('Icon 0');
-    //   expect(
-    //     await driver
-    //       .getVisibleActionByDataHookButtonDriver('data-hook-for-1')
-    //       .getButtonTextContent(),
-    //   ).toEqual('Icon 1');
-    //
-    //   const tooltipDriver1 = await driver.getVisibleActionTooltipDriver(0);
-    //   const tooltipDriver2 = await driver.getVisibleActionByDataHookTooltipDriver(
-    //     'data-hook-for-1',
-    //   );
-    //
-    //   expect(tooltipDriver1.getTooltipText()).toEqual('Action 0');
-    //   expect(tooltipDriver2.getTooltipText()).toEqual('Action 1');
-    // });
+    it('should put visible secondary actions in the cell', async () => {
+      const { driver } = render(
+        <TableActionCell
+          {...primaryActionProps()}
+          {...secondaryActionsProps({
+            actionDataHooks: [undefined, 'data-hook-for-1'],
+          })}
+        />,
+      );
+
+      expect(await driver.getVisibleActionsCount()).toEqual(2);
+
+      // expect(
+      //   await driver.getVisibleActionButtonDriver(0).getButtonTextContent(),
+      // ).toEqual('Icon 0');
+      // expect(
+      //   await driver
+      //     .getVisibleActionByDataHookButtonDriver('data-hook-for-1')
+      //     .getButtonTextContent(),
+      // ).toEqual('Icon 1');
+      //
+      // const tooltipDriver1 = await driver.getVisibleActionTooltipDriver(0);
+      // const tooltipDriver2 = await driver.getVisibleActionByDataHookTooltipDriver(
+      //   'data-hook-for-1',
+      // );
+      //
+      // expect(tooltipDriver1.getTooltipText()).toEqual('Action 0');
+      // expect(tooltipDriver2.getTooltipText()).toEqual('Action 1');
+    });
     //
     // it('should put hidden secondary action in a PopoverMenu', async () => {
     //   const { driver } = render(

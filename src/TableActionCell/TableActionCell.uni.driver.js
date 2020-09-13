@@ -1,4 +1,8 @@
-import { baseUniDriverFactory, findByHook } from '../../test/utils/unidriver';
+import {
+  baseUniDriverFactory,
+  findByHook,
+  countByHook,
+} from '../../test/utils/unidriver';
 import { dataHooks } from './constants';
 import { buttonDriverFactory } from '../Button/Button.uni.driver';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.uni.driver';
@@ -6,8 +10,8 @@ import { PopoverMenuDriver } from '../PopoverMenu/PopoverMenu.uni.driver';
 import { consoleErrors } from 'wix-ui-test-utils/jest-setup';
 
 export const tableActionCellUniDriverFactory = (base, body) => {
-  const getVisibleActionsWrapper = async () =>
-    await findByHook(base, dataHooks.tableActionCellVisibleActions);
+  // const getVisibleActionsWrapper = async () =>
+  //   await findByHook(base, dataHooks.tableActionCellVisibleActions);
 
   const getPrimaryActionButtonDriver = () =>
     buttonDriverFactory(
@@ -30,13 +34,13 @@ export const tableActionCellUniDriverFactory = (base, body) => {
   //     eventTrigger,
   //   });
   //
-  const getVisibleActionButtonDriver = actionIndex =>
-    buttonDriverFactory(
-      getVisibleActionsWrapper().querySelectorAll('button')[actionIndex],
-    );
+  // const getVisibleActionButtonDriver = actionIndex =>
+  //   buttonDriverFactory(
+  //     getVisibleActionsWrapper().querySelectorAll('button')[actionIndex],
+  //   );
 
-  const getVisibleActionByDataHookButtonDriver = dataHook =>
-    buttonDriverFactory(findByHook(getVisibleActionsWrapper(), dataHook));
+  // const getVisibleActionByDataHookButtonDriver = dataHook =>
+  //   buttonDriverFactory(findByHook(getVisibleActionsWrapper(), dataHook));
 
   const getHiddenActionsPopoverMenuDriver = () =>
     PopoverMenuDriver(findByHook(base, dataHooks.tableActionCellPopoverMenu));
@@ -56,10 +60,8 @@ export const tableActionCellUniDriverFactory = (base, body) => {
       await getPrimaryActionButtonDriver().isButtonDisabled(),
 
     /** Get the number of the visible secondary actions */
-    getVisibleActionsCount: async () => {
-      const wrapper = await getVisibleActionsWrapper();
-      return wrapper ? wrapper.childElementCount : 0;
-    },
+    getVisibleActionsCount: () =>
+      countByHook(base, dataHooks.tableActionCellVisibleAction),
 
     /** Get the number of hidden secondary actions (in the <PopoverMenu/>, requires it to be open) */
     getHiddenActionsCount: () =>
@@ -70,8 +72,8 @@ export const tableActionCellUniDriverFactory = (base, body) => {
     // getVisibleActionByDataHookTooltipDriver,
     // /** Get the driver of a specific visible secondary action <Button/> */
     // getVisibleActionButtonDriver,
-    /** Get the driver of a specific visible secondary action <Button/> by its specified dataHook */
-    getVisibleActionByDataHookButtonDriver,
+    // /** Get the driver of a specific visible secondary action <Button/> by its specified dataHook */
+    // getVisibleActionByDataHookButtonDriver,
     /** Get the driver of the hidden secondary action <PopoverMenu/> */
     getHiddenActionsPopoverMenuDriver,
     // /** Click an a visible secondary action */
