@@ -81,28 +81,28 @@ class Button extends PureComponent {
     return (
       <FontUpgradeContext.Consumer>
         {context => (
-          <ButtonNext
-            data-madefor={context.active}
-            {...rest}
-            {...generateDataAttr(this.props, ['skin', 'size', 'priority'])}
-            className={st(
-              classes.root,
-              { fluid: fullWidth, skin, priority, size, ellipsis },
-              className,
+          <Ellipsis
+            ellipsis={ellipsis}
+            showTooltip={showTooltip}
+            {...tooltipProps}
+            render={({ ref, ellipsisClasses }) => (
+              <ButtonNext
+                data-madefor={context.active}
+                {...rest}
+                {...generateDataAttr(this.props, ['skin', 'size', 'priority'])}
+                className={st(
+                  classes.root,
+                  { fluid: fullWidth, skin, priority, size },
+                  className,
+                )}
+                data-hook={dataHook}
+                contentClassName={ellipsisClasses()}
+                contentRef={ref}
+              >
+                {children}
+              </ButtonNext>
             )}
-            data-hook={dataHook}
-          >
-            <Ellipsis
-              ellipsis={ellipsis}
-              showTooltip={showTooltip}
-              {...tooltipProps}
-              render={({ ref, ellipsisClasses }) => (
-                <div ref={ref} className={ellipsisClasses()}>
-                  {children}
-                </div>
-              )}
-            />
-          </ButtonNext>
+          />
         )}
       </FontUpgradeContext.Consumer>
     );

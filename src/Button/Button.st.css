@@ -19,7 +19,7 @@
 
 .root {
   -st-extends: ButtonNext;
-  -st-states: skin(string), size(string), priority(string), fluid, ellipsis;
+  -st-states: skin(string), size(string), priority(string), fluid;
 
   justify-content: center;
 
@@ -51,10 +51,6 @@
 .root::content {
   display: flex;
   align-items: center;
-}
-
-.root:ellipsis::content {
-  max-width: 100%;
 }
 
 .root:hover {
