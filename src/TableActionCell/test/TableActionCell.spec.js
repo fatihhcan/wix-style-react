@@ -262,13 +262,13 @@ describe('Table Action Cell', () => {
     //   );
     // });
     //
-    // it('should mark the primary action as disabled', async () => {
-    //   const { driver } = render(
-    //     <TableActionCell {...primaryActionProps(() => {}, true)} />,
-    //   );
-    //
-    //   expect(await driver.getIsPrimaryActionButtonDisabled()).toBe(true);
-    // });
+    it('should mark the primary action as disabled', async () => {
+      const { driver } = render(
+        <TableActionCell {...primaryActionProps(() => {}, true)} />,
+      );
+
+      expect(await driver.getIsPrimaryActionButtonDisabled()).toBe(true);
+    });
 
     // describe('when a secondary action is disabled', () => {
     //   it('should mark the a visible secondary actions as disabled', async () => {

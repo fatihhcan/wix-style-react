@@ -2,6 +2,8 @@ import { baseUniDriverFactory, findByHook } from '../../test/utils/unidriver';
 import { dataHooks } from './constants';
 import { buttonDriverFactory } from '../Button/Button.uni.driver';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.uni.driver';
+import { PopoverMenuDriver } from '../PopoverMenu/PopoverMenu.uni.driver';
+import { consoleErrors } from 'wix-ui-test-utils/jest-setup';
 
 export const tableActionCellUniDriverFactory = (base, body) => {
   const getVisibleActionsWrapper = async () =>
@@ -28,25 +30,16 @@ export const tableActionCellUniDriverFactory = (base, body) => {
   //     eventTrigger,
   //   });
   //
-  // const getVisibleActionButtonDriver = actionIndex =>
-  //   buttonDriverFactory({
-  //     element: getVisibleActionsWrapper().querySelectorAll('button')[
-  //       actionIndex
-  //       ],
-  //   });
-  //
-  // const getVisibleActionByDataHookButtonDriver = dataHook =>
-  //   buttonDriverFactory({
-  //     element: getVisibleActionsWrapper().querySelector(
-  //       `[data-hook="${dataHook}"]`,
-  //     ),
-  //   });
+  const getVisibleActionButtonDriver = actionIndex =>
+    buttonDriverFactory(
+      getVisibleActionsWrapper().querySelectorAll('button')[actionIndex],
+    );
 
-  // const getHiddenActionsPopoverMenuDriver = () =>
-  //   popoverMenuTestkitFactory({
-  //     wrapper,
-  //     dataHook: dataHooks.tableActionCellPopoverMenu,
-  //   });
+  const getVisibleActionByDataHookButtonDriver = dataHook =>
+    buttonDriverFactory(findByHook(getVisibleActionsWrapper(), dataHook));
+
+  const getHiddenActionsPopoverMenuDriver = () =>
+    PopoverMenuDriver(findByHook(base, dataHooks.tableActionCellPopoverMenu));
 
   return {
     ...baseUniDriverFactory(base, body),
@@ -57,28 +50,30 @@ export const tableActionCellUniDriverFactory = (base, body) => {
     /** Click the primary action button from the action column */
     clickPrimaryActionButton: async () =>
       await getPrimaryActionButtonDriver().click(),
+
     /** Get whether the primary action button is disabled */
-    getIsPrimaryActionButtonDisabled: () =>
-      getPrimaryActionButtonDriver().isButtonDisabled(),
+    getIsPrimaryActionButtonDisabled: async () =>
+      await getPrimaryActionButtonDriver().isButtonDisabled(),
+
     /** Get the number of the visible secondary actions */
     getVisibleActionsCount: async () => {
       const wrapper = await getVisibleActionsWrapper();
       return wrapper ? wrapper.childElementCount : 0;
     },
 
-    // /** Get the number of hidden secondary actions (in the <PopoverMenu/>, requires it to be open) */
-    // getHiddenActionsCount: () =>
-    //   getHiddenActionsPopoverMenuDriver().childrenCount(),
+    /** Get the number of hidden secondary actions (in the <PopoverMenu/>, requires it to be open) */
+    getHiddenActionsCount: () =>
+      getHiddenActionsPopoverMenuDriver().childrenCount(),
     // /** Get the driver of a specific visible secondary action <Tooltip/> */
     // getVisibleActionTooltipDriver,
     // /** Get the driver of a specific visible secondary action <Tooltip/> by its specified dataHook */
     // getVisibleActionByDataHookTooltipDriver,
     // /** Get the driver of a specific visible secondary action <Button/> */
     // getVisibleActionButtonDriver,
-    // /** Get the driver of a specific visible secondary action <Button/> by its specified dataHook */
-    // getVisibleActionByDataHookButtonDriver,
-    // /** Get the driver of the hidden secondary action <PopoverMenu/> */
-    // getHiddenActionsPopoverMenuDriver,
+    /** Get the driver of a specific visible secondary action <Button/> by its specified dataHook */
+    getVisibleActionByDataHookButtonDriver,
+    /** Get the driver of the hidden secondary action <PopoverMenu/> */
+    getHiddenActionsPopoverMenuDriver,
     // /** Click an a visible secondary action */
     // clickVisibleAction: actionIndex =>
     //   getVisibleActionButtonDriver(actionIndex).click(),
@@ -90,12 +85,12 @@ export const tableActionCellUniDriverFactory = (base, body) => {
     //   getHiddenActionsPopoverMenuDriver()
     //     .getTriggerElement(dataHooks.triggerElement)
     //     .click(),
-    // /** Click on a hidden secondary action (requires the <PopoverMenu/> to be open) */
-    // clickHiddenAction: actionIndex =>
-    //   getHiddenActionsPopoverMenuDriver().clickAtChild(actionIndex),
-    // clickHiddenActionByDataHook: actionDataHook =>
-    //   getHiddenActionsPopoverMenuDriver().clickAtChildByDataHook(
-    //     actionDataHook,
-    //   ),
+    /** Click on a hidden secondary action (requires the <PopoverMenu/> to be open) */
+    clickHiddenAction: actionIndex =>
+      getHiddenActionsPopoverMenuDriver().clickAtChild(actionIndex),
+    clickHiddenActionByDataHook: actionDataHook =>
+      getHiddenActionsPopoverMenuDriver().clickAtChildByDataHook(
+        actionDataHook,
+      ),
   };
 };
