@@ -108,16 +108,16 @@ describe('Table Action Cell', () => {
       expect(onPrimaryActionTrigger).toHaveBeenCalledTimes(1);
     });
 
-    // it('should not have a primary action placeholder when there are also secondary actions', async () => {
-    //   const { driver } = render(
-    //     <TableActionCell
-    //       {...primaryActionProps()}
-    //       {...secondaryActionsProps()}
-    //     />,
-    //   );
-    //
-    //   expect(await driver.primaryActionPlaceholderExists()).toBe(false);
-    // });
+    it('should not have a primary action placeholder when there are also secondary actions', async () => {
+      const { driver } = render(
+        <TableActionCell
+          {...primaryActionProps()}
+          {...secondaryActionsProps()}
+        />,
+      );
+
+      expect(await driver.primaryActionPlaceholderExists()).toBe(false);
+    });
 
     // it('should put visible secondary actions in the cell', async () => {
     //   const { driver } = render(

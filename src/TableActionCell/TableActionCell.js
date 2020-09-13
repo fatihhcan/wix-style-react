@@ -103,7 +103,7 @@ function renderHiddenActions(actions, popoverMenuProps) {
 
 function renderPlaceholder() {
   return (
-    <IconButton skin="inverted">
+    <IconButton dataHook={dataHooks.tableActionCellPlaceholder} skin="inverted">
       <ChevronRight />
     </IconButton>
   );
@@ -153,11 +153,7 @@ const TableActionCell = props => {
       {primaryAction &&
         (!secondaryActions.length ||
           secondaryActions.length === numOfVisibleSecondaryActions) && (
-          <HoverSlot
-            display="notOnHover"
-            className={classes.placeholderIcon}
-            data-hook={dataHooks.tableActionCellPlaceholder}
-          >
+          <HoverSlot display="notOnHover" className={classes.placeholderIcon}>
             {renderPlaceholder()}
           </HoverSlot>
         )}
