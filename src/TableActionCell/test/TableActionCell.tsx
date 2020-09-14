@@ -15,7 +15,7 @@ function tableActionCellWithAllProps() {
       dataHook="hook"
       numOfVisibleSecondaryActions={2}
       popoverMenuProps={{}}
-      popoverMenuButtonSize="medium"
+      size="medium"
       primaryAction={{
         disabled: true,
         onClick: () => {},

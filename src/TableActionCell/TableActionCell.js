@@ -31,7 +31,7 @@ function renderPrimaryAction({ text, skin, onClick, disabled, size }) {
 }
 /* eslint-enable react/prop-types */
 
-function renderVisibleActions(actions) {
+function renderVisibleActions(actions, tableActionCellSize) {
   return actions.map(
     (
       {
@@ -62,7 +62,7 @@ function renderVisibleActions(actions) {
             onClick();
             event.stopPropagation();
           }}
-          size={size || 'medium'}
+          size={size || tableActionCellSize}
         >
           {icon}
         </IconButton>
@@ -71,7 +71,7 @@ function renderVisibleActions(actions) {
   );
 }
 
-function renderHiddenActions(actions, popoverMenuProps, popoverMenuButtonSize) {
+function renderHiddenActions(actions, popoverMenuProps, size) {
   return (
     <PopoverMenu
       dataHook={dataHooks.tableActionCellPopoverMenu}
@@ -82,7 +82,7 @@ function renderHiddenActions(actions, popoverMenuProps, popoverMenuButtonSize) {
         <IconButton
           skin="inverted"
           dataHook={dataHooks.triggerElement}
-          size={popoverMenuButtonSize || 'medium'}
+          size={size}
         >
           <More />
         </IconButton>
@@ -124,7 +124,7 @@ const TableActionCell = props => {
     numOfVisibleSecondaryActions,
     alwaysShowSecondaryActions,
     popoverMenuProps,
-    popoverMenuButtonSize,
+    size,
   } = props;
 
   const visibleActions = secondaryActions.slice(
@@ -156,11 +156,7 @@ const TableActionCell = props => {
       {hiddenActions.length > 0 && (
         <div onClick={e => e.stopPropagation()} className={classes.popoverMenu}>
           <HoverSlot display="always">
-            {renderHiddenActions(
-              hiddenActions,
-              popoverMenuProps,
-              popoverMenuButtonSize,
-            )}
+            {renderHiddenActions(hiddenActions, popoverMenuProps, size)}
           </HoverSlot>
         </div>
       )}
@@ -236,8 +232,8 @@ TableActionCell.propTypes = {
   /** Props being passed to the secondary actions' <PopoverMenu/> */
   popoverMenuProps: PropTypes.shape(PopoverMenu.propTypes),
 
-  /** Popover menu button size */
-  popoverMenuButtonSize: PropTypes.oneOf(['small', 'medium']),
+  /** Size of actions */
+  size: PropTypes.oneOf(['small', 'medium']),
 };
 
 TableActionCell.defaultProps = {
@@ -245,6 +241,7 @@ TableActionCell.defaultProps = {
   secondaryActions: [],
   numOfVisibleSecondaryActions: 0,
   alwaysShowSecondaryActions: false,
+  size: 'medium',
 };
 
 export default TableActionCell;

@@ -11,7 +11,7 @@ import { TableActionCell } from 'wix-style-react';
 const Example = () => (
   <div className={classes.exampleRow}>
     <TableActionCell
-      popoverMenuButtonSize="small"
+      size="small"
       dataHook="story-small-buttons"
       alwaysShowSecondaryActions
       primaryAction={{

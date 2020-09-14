@@ -8,7 +8,7 @@ type CommonTableActionCellProps = {
   secondaryActions?: TableActionCellSecondaryAction[];
   numOfVisibleSecondaryActions?: number;
   alwaysShowSecondaryActions?: boolean;
-  popoverMenuButtonSize?: 'small' | 'medium';
+  size?: 'small' | 'medium';
 };
 
 export type TableActionCellProps = CommonTableActionCellProps & {

@@ -71,7 +71,7 @@ const interactiveTests = [
         it: 'Should display small actions',
         props: {
           alwaysShowSecondaryActions: true,
-          popoverMenuButtonSize: 'small',
+          size: 'small',
           primaryAction: {
             onClick: () => {},
             text: 'text',
