@@ -91,7 +91,7 @@ class TextButton extends PureComponent {
             ])}
             className={st(
               classes.root,
-              { skin, underline, weight, size, fluid },
+              { skin, underline, weight, size, fluid, ellipsis },
               className,
             )}
             data-hook={dataHook}

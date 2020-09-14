@@ -17,7 +17,7 @@
 
 .root {
   -st-extends: ButtonNext;
-  -st-states: skin(string), underline(string), weight(string), size(string), fluid;
+  -st-states: skin(string), underline(string), weight(string), size(string), fluid, ellipsis;
 
   color: value(THEME-COLOR-10);
   white-space: nowrap;
@@ -54,6 +54,10 @@
 
 .root:focus-visible {
   box-shadow: 0 0 0 3px value(F00);
+}
+
+.root:ellipsis {
+  max-width: 100%;
 }
 
 .root:fluid,
