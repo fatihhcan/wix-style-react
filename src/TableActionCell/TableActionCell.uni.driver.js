@@ -8,7 +8,6 @@ import { dataHooks } from './constants';
 import { buttonDriverFactory } from '../Button/Button.uni.driver';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.uni.driver';
 import { PopoverMenuDriver } from '../PopoverMenu/PopoverMenu.uni.driver';
-import { iconButtonDriverFactory } from '../IconButton/IconButton.uni.driver';
 
 export const tableActionCellUniDriverFactory = (base, body) => {
   const getPrimaryActionButtonDriver = () =>
@@ -23,7 +22,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
     tooltipDriverFactory(findByHook(base, dataHook));
 
   const getVisibleActionButtonDriver = actionIndex =>
-    iconButtonDriverFactory(
+    buttonDriverFactory(
       findByHookAtIndex(base, dataHooks.visibleAction, actionIndex),
     );
 
