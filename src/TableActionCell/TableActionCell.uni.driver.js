@@ -38,8 +38,8 @@ export const tableActionCellUniDriverFactory = (base, body) => {
       findByHookAtIndex(base, dataHooks.visibleAction, actionIndex),
     );
 
-  // const getVisibleActionByDataHookButtonDriver = dataHook =>
-  //   buttonDriverFactory(findByHook(getVisibleActionsWrapper(), dataHook));
+  const getVisibleActionByDataHookButtonDriver = dataHook =>
+    buttonDriverFactory(findByHook(base, dataHook));
 
   const getHiddenActionsPopoverMenuDriver = () =>
     PopoverMenuDriver(findByHook(base, dataHooks.popoverMenu));
@@ -71,7 +71,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
     /** Get the driver of a specific visible secondary action <Button/> */
     getVisibleActionButtonDriver,
     /** Get the driver of a specific visible secondary action <Button/> by its specified dataHook */
-    // getVisibleActionByDataHookButtonDriver,
+    getVisibleActionByDataHookButtonDriver,
     /** Get the driver of the hidden secondary action <PopoverMenu/> */
     getHiddenActionsPopoverMenuDriver,
     /** Click an a visible secondary action */
@@ -81,8 +81,8 @@ export const tableActionCellUniDriverFactory = (base, body) => {
     },
 
     /** Click an a visible secondary action by its specified dataHook  */
-    // clickVisibleActionByDataHook: actionDataHook =>
-    //   getVisibleActionByDataHookButtonDriver(actionDataHook).click(),
+    clickVisibleActionByDataHook: actionDataHook =>
+      getVisibleActionByDataHookButtonDriver(actionDataHook).click(),
     /** Click on the hidden secondary actions <PopoverMenu/> */
     clickPopoverMenu: () =>
       getHiddenActionsPopoverMenuDriver()
