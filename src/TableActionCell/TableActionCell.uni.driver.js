@@ -79,11 +79,11 @@ export const tableActionCellUniDriverFactory = (base, body) => {
     // /** Click an a visible secondary action by its specified dataHook  */
     // clickVisibleActionByDataHook: actionDataHook =>
     //   getVisibleActionByDataHookButtonDriver(actionDataHook).click(),
-    // /** Click on the hidden secondary actions <PopoverMenu/> */
-    // clickPopoverMenu: () =>
-    //   getHiddenActionsPopoverMenuDriver()
-    //     .getTriggerElement(dataHooks.triggerElement)
-    //     .click(),
+    /** Click on the hidden secondary actions <PopoverMenu/> */
+    clickPopoverMenu: () =>
+      getHiddenActionsPopoverMenuDriver()
+        .getTriggerElement(dataHooks.triggerElement)
+        .click(),
     /** Click on a hidden secondary action (requires the <PopoverMenu/> to be open) */
     clickHiddenAction: actionIndex =>
       getHiddenActionsPopoverMenuDriver().clickAtChild(actionIndex),

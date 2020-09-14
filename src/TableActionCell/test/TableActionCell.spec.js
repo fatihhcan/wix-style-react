@@ -148,25 +148,25 @@ describe('Table Action Cell', () => {
       // expect(tooltipDriver1.getTooltipText()).toEqual('Action 0');
       // expect(tooltipDriver2.getTooltipText()).toEqual('Action 1');
     });
-    //
-    // it('should put hidden secondary action in a PopoverMenu', async () => {
-    //   const { driver } = render(
-    //     <TableActionCell
-    //       {...primaryActionProps()}
-    //       {...secondaryActionsProps()}
-    //     />,
-    //   );
-    //
-    //   expect(await driver.getHiddenActionsPopoverMenuDriver().exists()).toEqual(
-    //     true,
-    //   );
-    //
-    //   await driver.clickPopoverMenu();
-    //   await eventually(async () =>
-    //     expect(await driver.getHiddenActionsCount()).toEqual(2),
-    //   );
-    // });
-    //
+
+    it('should put hidden secondary action in a PopoverMenu', async () => {
+      const { driver } = render(
+        <TableActionCell
+          {...primaryActionProps()}
+          {...secondaryActionsProps()}
+        />,
+      );
+
+      expect(await driver.getHiddenActionsPopoverMenuDriver().exists()).toEqual(
+        true,
+      );
+
+      await driver.clickPopoverMenu();
+      await eventually(async () =>
+        expect(await driver.getHiddenActionsCount()).toEqual(2),
+      );
+    });
+
     // it('should trigger secondary action on click', async () => {
     //   const actionTriggers = Array(4)
     //     .fill(undefined)
