@@ -92,7 +92,7 @@ class Button extends PureComponent {
                 {...generateDataAttr(this.props, ['skin', 'size', 'priority'])}
                 className={st(
                   classes.root,
-                  { fluid: fullWidth, skin, priority, size },
+                  { fluid: fullWidth, skin, priority, size, ellipsis },
                   className,
                 )}
                 data-hook={dataHook}
