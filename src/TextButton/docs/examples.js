@@ -69,7 +69,7 @@ export const custom = `
 
 export const ellipsis = `
 <Box width="300px">
-  <TextButton fluid ellipsis>
+  <TextButton ellipsis>
     This is a very very very very long text that will be cropped by ellipsis at some point
   </TextButton>
 </Box>
