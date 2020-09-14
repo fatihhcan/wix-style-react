@@ -5,21 +5,19 @@ import buttonDriverFactory from '../Button/Button.legacy.driver';
 
 const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
   const getVisibleActionsWrapper = () =>
-    element.querySelector(
-      `[data-hook="${dataHooks.tableActionCellVisibleActions}"]`,
-    );
+    element.querySelector(`[data-hook="${dataHooks.visibleActions}"]`);
 
   const getPrimaryActionButtonDriver = () =>
     buttonDriverFactory({
       element: element.querySelector(
-        `[data-hook="${dataHooks.tableActionCellPrimaryAction}"] button`,
+        `[data-hook="${dataHooks.primaryAction}"] button`,
       ),
     });
 
   const getVisibleActionTooltipDriver = actionIndex =>
     tooltipDriverFactory({
       element: getVisibleActionsWrapper().querySelectorAll(
-        `[data-hook="${dataHooks.tableActionCellVisibleActionTooltip}"]`,
+        `[data-hook="${dataHooks.visibleActionTooltip}"]`,
       )[actionIndex],
       eventTrigger,
     });
@@ -49,7 +47,7 @@ const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
   const getHiddenActionsPopoverMenuDriver = () =>
     popoverMenuTestkitFactory({
       wrapper,
-      dataHook: dataHooks.tableActionCellPopoverMenu,
+      dataHook: dataHooks.popoverMenu,
     });
 
   return {
