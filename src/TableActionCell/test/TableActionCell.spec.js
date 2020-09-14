@@ -167,43 +167,43 @@ describe('Table Action Cell', () => {
       );
     });
 
-    // it('should trigger secondary action on click', async () => {
-    //   const actionTriggers = Array(4)
-    //     .fill(undefined)
-    //     .map(() => jest.fn());
-    //
-    //   const { driver } = render(
-    //     <TableActionCell
-    //       {...primaryActionProps()}
-    //       {...secondaryActionsProps({
-    //         actionTriggers,
-    //         actionDataHooks: [
-    //           undefined,
-    //           'data-hook-for-1',
-    //           undefined,
-    //           'data-hook-for-3',
-    //         ],
-    //       })}
-    //     />,
-    //   );
-    //
-    //   await driver.clickVisibleAction(0);
-    //   await driver.clickVisibleActionByDataHook('data-hook-for-1');
-    //
-    //   await driver.clickPopoverMenu();
-    //   await eventually(() => driver.clickHiddenAction(0));
-    //
-    //   await driver.clickPopoverMenu();
-    //   await eventually(
-    //     async () => await driver.clickHiddenActionByDataHook('data-hook-for-3'),
-    //   );
-    //
-    //   await eventually(() =>
-    //     actionTriggers.forEach(async actionTrigger => {
-    //       await expect(actionTrigger).toHaveBeenCalledTimes(1);
-    //     }),
-    //   );
-    // });
+    it('should trigger secondary action on click', async () => {
+      const actionTriggers = Array(4)
+        .fill(undefined)
+        .map(() => jest.fn());
+
+      const { driver } = render(
+        <TableActionCell
+          {...primaryActionProps()}
+          {...secondaryActionsProps({
+            actionTriggers,
+            actionDataHooks: [
+              undefined,
+              'data-hook-for-1',
+              undefined,
+              'data-hook-for-3',
+            ],
+          })}
+        />,
+      );
+
+      await driver.clickVisibleAction(0);
+      // await driver.clickVisibleActionByDataHook('data-hook-for-1');
+
+      await driver.clickPopoverMenu();
+      await eventually(() => driver.clickHiddenAction(0));
+
+      await driver.clickPopoverMenu();
+      // await eventually(
+      //   async () => await driver.clickHiddenActionByDataHook('data-hook-for-3'),
+      // );
+
+      await eventually(() =>
+        actionTriggers.forEach(async actionTrigger => {
+          await expect(actionTrigger).toHaveBeenCalledTimes(1);
+        }),
+      );
+    });
 
     it('should render disabled hidden actions', async () => {
       const actionTrigger = jest.fn();

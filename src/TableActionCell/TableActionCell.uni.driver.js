@@ -1,6 +1,7 @@
 import {
   baseUniDriverFactory,
   findByHook,
+  findByHookAtIndex,
   countByHook,
 } from '../../test/utils/unidriver';
 import { dataHooks } from './constants';
@@ -34,7 +35,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
   //
   const getVisibleActionButtonDriver = actionIndex =>
     iconButtonDriverFactory(
-      findByHook(base, dataHooks.visibleAction)[actionIndex],
+      findByHookAtIndex(base, dataHooks.visibleAction, actionIndex),
     );
 
   // const getVisibleActionByDataHookButtonDriver = dataHook =>
@@ -69,14 +70,17 @@ export const tableActionCellUniDriverFactory = (base, body) => {
     // getVisibleActionByDataHookTooltipDriver,
     /** Get the driver of a specific visible secondary action <Button/> */
     getVisibleActionButtonDriver,
-    // /** Get the driver of a specific visible secondary action <Button/> by its specified dataHook */
+    /** Get the driver of a specific visible secondary action <Button/> by its specified dataHook */
     // getVisibleActionByDataHookButtonDriver,
     /** Get the driver of the hidden secondary action <PopoverMenu/> */
     getHiddenActionsPopoverMenuDriver,
-    // /** Click an a visible secondary action */
-    // clickVisibleAction: actionIndex =>
-    //   getVisibleActionButtonDriver(actionIndex).click(),
-    // /** Click an a visible secondary action by its specified dataHook  */
+    /** Click an a visible secondary action */
+    clickVisibleAction: async actionIndex => {
+      const driver = await getVisibleActionButtonDriver(actionIndex);
+      return driver.click();
+    },
+
+    /** Click an a visible secondary action by its specified dataHook  */
     // clickVisibleActionByDataHook: actionDataHook =>
     //   getVisibleActionByDataHookButtonDriver(actionDataHook).click(),
     /** Click on the hidden secondary actions <PopoverMenu/> */
