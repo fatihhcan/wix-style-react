@@ -204,64 +204,64 @@ describe('Table Action Cell', () => {
     //     }),
     //   );
     // });
-    //
-    // it('should render disabled hidden actions', async () => {
-    //   const actionTrigger = jest.fn();
-    //   const disabledAction = {
-    //     text: `Disabled Action`,
-    //     icon: <span>Icon</span>,
-    //     onClick: actionTrigger,
-    //     disabled: true,
-    //   };
-    //   const { driver } = render(
-    //     <TableActionCell
-    //       {...primaryActionProps()}
-    //       secondaryActions={[disabledAction]}
-    //       numOfVisibleSecondaryActions={0}
-    //     />,
-    //   );
-    //
-    //   await driver.clickPopoverMenu();
-    //
-    //   await eventually(async () => await driver.clickHiddenAction(0));
-    //
-    //   expect(actionTrigger).not.toHaveBeenCalled();
-    // });
-    //
-    // it('should allow to change the number of visible secondary actions', async () => {
-    //   const { driver } = render(
-    //     <TableActionCell
-    //       {...primaryActionProps()}
-    //       {...secondaryActionsProps()}
-    //       numOfVisibleSecondaryActions={3}
-    //     />,
-    //   );
-    //
-    //   expect(await driver.getVisibleActionsCount()).toEqual(3);
-    //
-    //   await driver.clickPopoverMenu();
-    //   await eventually(async () =>
-    //     expect(await driver.getHiddenActionsCount()).toEqual(1),
-    //   );
-    // });
-    //
-    // it('should allow to have no visible secondary actions', async () => {
-    //   const { driver } = render(
-    //     <TableActionCell
-    //       {...primaryActionProps()}
-    //       {...secondaryActionsProps()}
-    //       numOfVisibleSecondaryActions={0}
-    //     />,
-    //   );
-    //
-    //   expect(await driver.getVisibleActionsCount()).toEqual(0);
-    //
-    //   await driver.clickPopoverMenu();
-    //   await eventually(async () =>
-    //     expect(await driver.getHiddenActionsCount()).toEqual(4),
-    //   );
-    // });
-    //
+
+    it('should render disabled hidden actions', async () => {
+      const actionTrigger = jest.fn();
+      const disabledAction = {
+        text: `Disabled Action`,
+        icon: <span>Icon</span>,
+        onClick: actionTrigger,
+        disabled: true,
+      };
+      const { driver } = render(
+        <TableActionCell
+          {...primaryActionProps()}
+          secondaryActions={[disabledAction]}
+          numOfVisibleSecondaryActions={0}
+        />,
+      );
+
+      await driver.clickPopoverMenu();
+
+      await eventually(async () => await driver.clickHiddenAction(0));
+
+      expect(actionTrigger).not.toHaveBeenCalled();
+    });
+
+    it('should allow to change the number of visible secondary actions', async () => {
+      const { driver } = render(
+        <TableActionCell
+          {...primaryActionProps()}
+          {...secondaryActionsProps()}
+          numOfVisibleSecondaryActions={3}
+        />,
+      );
+
+      expect(await driver.getVisibleActionsCount()).toEqual(3);
+
+      await driver.clickPopoverMenu();
+      await eventually(async () =>
+        expect(await driver.getHiddenActionsCount()).toEqual(1),
+      );
+    });
+
+    it('should allow to have no visible secondary actions', async () => {
+      const { driver } = render(
+        <TableActionCell
+          {...primaryActionProps()}
+          {...secondaryActionsProps()}
+          numOfVisibleSecondaryActions={0}
+        />,
+      );
+
+      expect(await driver.getVisibleActionsCount()).toEqual(0);
+
+      await driver.clickPopoverMenu();
+      await eventually(async () =>
+        expect(await driver.getHiddenActionsCount()).toEqual(4),
+      );
+    });
+
     it('should mark the primary action as disabled', async () => {
       const { driver } = render(
         <TableActionCell {...primaryActionProps(() => {}, true)} />,
