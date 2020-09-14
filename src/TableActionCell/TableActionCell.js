@@ -44,29 +44,27 @@ function renderVisibleActions(actions) {
       },
       index,
     ) => (
-      <div key={index} data-hook={dataHooks.visibleAction}>
-        <Tooltip
-          dataHook={dataHook || dataHooks.visibleActionTooltip}
-          disabled={disabled && disabledDescription === ''}
-          content={
-            disabled && Boolean(disabledDescription)
-              ? disabledDescription
-              : text
-          }
-          {...tooltipProps}
+      <Tooltip
+        key={index}
+        dataHook={dataHook || dataHooks.visibleActionTooltip}
+        disabled={disabled && disabledDescription === ''}
+        content={
+          disabled && Boolean(disabledDescription) ? disabledDescription : text
+        }
+        {...tooltipProps}
+      >
+        <IconButton
+          dataHook={dataHooks.visibleAction}
+          skin="inverted"
+          disabled={disabled}
+          onClick={event => {
+            onClick();
+            event.stopPropagation();
+          }}
         >
-          <IconButton
-            skin="inverted"
-            disabled={disabled}
-            onClick={event => {
-              onClick();
-              event.stopPropagation();
-            }}
-          >
-            {icon}
-          </IconButton>
-        </Tooltip>
-      </div>
+          {icon}
+        </IconButton>
+      </Tooltip>
     ),
   );
 }

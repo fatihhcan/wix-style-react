@@ -7,7 +7,7 @@ import { dataHooks } from './constants';
 import { buttonDriverFactory } from '../Button/Button.uni.driver';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.uni.driver';
 import { PopoverMenuDriver } from '../PopoverMenu/PopoverMenu.uni.driver';
-import { consoleErrors } from 'wix-ui-test-utils/jest-setup';
+import { iconButtonDriverFactory } from '../IconButton/IconButton.uni.driver';
 
 export const tableActionCellUniDriverFactory = (base, body) => {
   // const getVisibleActionsWrapper = async () =>
@@ -32,10 +32,10 @@ export const tableActionCellUniDriverFactory = (base, body) => {
   //     eventTrigger,
   //   });
   //
-  // const getVisibleActionButtonDriver = actionIndex =>
-  //   buttonDriverFactory(
-  //     getVisibleActionsWrapper().querySelectorAll('button')[actionIndex],
-  //   );
+  const getVisibleActionButtonDriver = actionIndex =>
+    iconButtonDriverFactory(
+      findByHook(base, dataHooks.visibleAction)[actionIndex],
+    );
 
   // const getVisibleActionByDataHookButtonDriver = dataHook =>
   //   buttonDriverFactory(findByHook(getVisibleActionsWrapper(), dataHook));
@@ -67,8 +67,8 @@ export const tableActionCellUniDriverFactory = (base, body) => {
     // getVisibleActionTooltipDriver,
     // /** Get the driver of a specific visible secondary action <Tooltip/> by its specified dataHook */
     // getVisibleActionByDataHookTooltipDriver,
-    // /** Get the driver of a specific visible secondary action <Button/> */
-    // getVisibleActionButtonDriver,
+    /** Get the driver of a specific visible secondary action <Button/> */
+    getVisibleActionButtonDriver,
     // /** Get the driver of a specific visible secondary action <Button/> by its specified dataHook */
     // getVisibleActionByDataHookButtonDriver,
     /** Get the driver of the hidden secondary action <PopoverMenu/> */
