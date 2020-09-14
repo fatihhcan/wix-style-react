@@ -17,7 +17,7 @@
 
 .root {
   -st-extends: ButtonNext;
-  -st-states: skin(string), underline(string), weight(string), size(string), fluid, ellipsis;
+  -st-states: skin(string), underline(string), weight(string), size(string), fluid;
 
   color: value(THEME-COLOR-10);
   white-space: nowrap;
