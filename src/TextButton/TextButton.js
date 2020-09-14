@@ -76,32 +76,32 @@ class TextButton extends PureComponent {
     } = this.props;
 
     return (
-      <ButtonNext
-        {...rest}
-        {...generateDataAttr(this.props, [
-          'skin',
-          'size',
-          'weight',
-          'underline',
-        ])}
-        className={st(
-          classes.root,
-          { skin, underline, weight, size, fluid, ellipsis },
-          className,
+      <Ellipsis
+        ellipsis={ellipsis}
+        showTooltip={showTooltip}
+        {...tooltipProps}
+        render={({ ref, ellipsisClasses }) => (
+          <ButtonNext
+            {...rest}
+            {...generateDataAttr(this.props, [
+              'skin',
+              'size',
+              'weight',
+              'underline',
+            ])}
+            className={st(
+              classes.root,
+              { skin, underline, weight, size, fluid },
+              className,
+            )}
+            data-hook={dataHook}
+            contentClassName={ellipsisClasses()}
+            contentRef={ref}
+          >
+            {children}
+          </ButtonNext>
         )}
-        data-hook={dataHook}
-      >
-        <Ellipsis
-          ellipsis={ellipsis}
-          showTooltip={showTooltip}
-          {...tooltipProps}
-          render={({ ref, ellipsisClasses }) => (
-            <div ref={ref} className={ellipsisClasses()}>
-              {children}
-            </div>
-          )}
-        />
-      </ButtonNext>
+      />
     );
   }
 }
