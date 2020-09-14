@@ -11,6 +11,10 @@ const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
       ),
     });
 
+  const visibleActions = element.querySelectorAll(
+    `[data-hook="${dataHooks.visibleAction}"]`,
+  );
+
   // const getVisibleActionTooltipDriver = actionIndex =>
   //   tooltipDriverFactory({
   //     element: getVisibleActionsWrapper().querySelectorAll(
@@ -27,16 +31,18 @@ const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
   //     eventTrigger,
   //   });
 
-  // const getVisibleActionButtonDriver = actionIndex =>
-  //   buttonDriverFactory({
-  //     element: getVisibleActionsWrapper().querySelectorAll('button')[
-  //       actionIndex
-  //     ],
+  // const getVisibleActionButtonDriver = actionIndex => {
+  //
+  //   return buttonDriverFactory({
+  //     element: visibleActions[actionIndex].outerHTML,
   //   });
-
+  //
+  // };
+  //
+  //
   // const getVisibleActionByDataHookButtonDriver = dataHook =>
   //   buttonDriverFactory({
-  //     element: getVisibleActionsWrapper().querySelector(
+  //     element: element.querySelector(`[data-hook="${dataHooks.visibleAction}"]`).parent.querySelector(
   //       `[data-hook="${dataHook}"]`,
   //     ),
   //   });
@@ -60,9 +66,7 @@ const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
     getIsPrimaryActionButtonDisabled: () =>
       getPrimaryActionButtonDriver().isButtonDisabled(),
     /** Get the number of the visible secondary actions */
-    getVisibleActionsCount: () =>
-      element.querySelectorAll(`[data-hook="${dataHooks.visibleAction}"]`)
-        .length,
+    getVisibleActionsCount: () => visibleActions.length,
     /** Get the number of hidden secondary actions (in the <PopoverMenu/>, requires it to be open) */
     getHiddenActionsCount: () =>
       getHiddenActionsPopoverMenuDriver().childrenCount(),
@@ -81,7 +85,7 @@ const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
     //   getVisibleActionButtonDriver(actionIndex).click(),
     /** Click an a visible secondary action by its specified dataHook  */
     // clickVisibleActionByDataHook: actionDataHook =>
-    //   getVisibleActionByDataHookButtonDriver(actionDataHook).click(),
+    // getVisibleActionByDataHookButtonDriver(actionDataHook).click(),
     /** Click on the hidden secondary actions <PopoverMenu/> */
     clickPopoverMenu: () =>
       getHiddenActionsPopoverMenuDriver()
