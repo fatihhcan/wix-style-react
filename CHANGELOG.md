@@ -15,18 +15,19 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Breaking:
+- `<ModalSelectorLayout/>` - use new `<CustomModalLayout/>` [#5831](https://github.com/wix/wix-style-react/pull/5831), [#5972](https://github.com/wix/wix-style-react/pull/5972)
+
+## 9.10.0 - 2020-09-14
 ### Added:
 - `<Ellipsis/>`- adding `maxLines` prop [#5885](https://github.com/wix/wix-style-react/pull/5885)
 
-### Changed: 
+### Changed:
 - `<PageHeader/>`- subtitle was changed to be max of two lines (with ellipsis) [#5964](https://github.com/wix/wix-style-react/pull/5964)
 - `<BaseModalLayout/>` - Fix button content type [#5966](https://github.com/wix/wix-style-react/pull/5966)
 
 ### Fixed:
 - `<BaseModalLayout />` - support nodes as buttons' children [#5958](https://github.com/wix/wix-style-react/pull/5958)
-
-### Breaking:
-- `<ModalSelectorLayout/>` - use new `<CustomModalLayout/>` [#5831](https://github.com/wix/wix-style-react/pull/5831)
 
 ## 9.9.0 - 2020-09-10
 ### Added
