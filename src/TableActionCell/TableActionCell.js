@@ -12,12 +12,15 @@ import { classes } from './TableActionCell.st.css';
 import { TooltipCommonProps } from '../common/PropTypes/TooltipCommon';
 
 /* eslint-disable react/prop-types */
-function renderPrimaryAction({ text, skin, onClick, disabled, size }) {
+function renderPrimaryAction(
+  { text, skin, onClick, disabled, size },
+  tableActionCellSize,
+) {
   return (
     <Button
       disabled={disabled}
       skin={skin}
-      size={size || 'medium'}
+      size={size || tableActionCellSize}
       onClick={event => {
         onClick();
 
@@ -140,7 +143,7 @@ const TableActionCell = props => {
           display="onHover"
           data-hook={dataHooks.tableActionCellPrimaryAction}
         >
-          {renderPrimaryAction(primaryAction)}
+          {renderPrimaryAction(primaryAction, size)}
         </HoverSlot>
       )}
 
@@ -149,7 +152,7 @@ const TableActionCell = props => {
           display={alwaysShowSecondaryActions ? 'always' : 'onHover'}
           data-hook={dataHooks.tableActionCellVisibleActions}
         >
-          {renderVisibleActions(visibleActions)}
+          {renderVisibleActions(visibleActions, size)}
         </HoverSlot>
       )}
 

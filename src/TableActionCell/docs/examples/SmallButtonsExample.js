@@ -17,20 +17,17 @@ const Example = () => (
       primaryAction={{
         text: 'Edit',
         skin: 'inverted',
-        size: 'small',
         onClick: () => window.alert('Primary action was triggered!'),
       }}
       secondaryActions={[
         {
           text: 'Star',
           icon: <Star />,
-          size: 'small',
           onClick: () => window.alert('Star action was triggered.'),
         },
         {
           text: 'Download',
           icon: <Download />,
-          size: 'small',
           onClick: () => window.alert('Download action was triggered.'),
         },
         {
