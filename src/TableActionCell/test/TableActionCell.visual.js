@@ -76,19 +76,16 @@ const interactiveTests = [
             onClick: () => {},
             text: 'text',
             skin: 'standard',
-            size: 'small',
           },
           secondaryActions: [
             {
               text: 'Star',
               icon: <Star />,
-              size: 'small',
               onClick: () => window.alert('Star action was triggered.'),
             },
             {
               text: 'Download',
               icon: <Download />,
-              size: 'small',
               onClick: () => window.alert('Download action was triggered.'),
             },
             {
