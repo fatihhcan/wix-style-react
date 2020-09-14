@@ -1,52 +1,48 @@
 import React from 'react';
-import times from '../../utils/operators/times';
+
+import {
+  header,
+  tabs,
+  tab,
+  description,
+  playground,
+  api,
+  testkit,
+  importExample,
+  divider,
+  example as baseExample,
+  title,
+} from 'wix-storybook-utils/Sections';
+
+import * as examples from './examples';
+
+import allComponents from '../../../stories/utils/allComponents';
+
+import { storySettings } from './storySettings';
 
 import ModalSelectorLayout from '..';
 import Text from '../../Text';
 
-import { storySettings } from './storySettings';
-
-const ITEMS = times(50, i => ({
-  id: i,
-  title: `Title ${i}`,
-  subtitle: `Subtitle ${i}`,
-  extraText: `Extra Text ${i}`,
-  disabled: !(i % 2),
-  image: (
-    <img width="100%" height="100%" src="http://via.placeholder.com/100x100" />
-  ),
-}));
+const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
+
   component: ModalSelectorLayout,
   componentPath: '..',
-
-  componentProps: setState => ({
+  componentProps: {
     dataHook: 'storybook-modal-selector-layout',
     height: '540px',
-    onClose: () => setState({ isOpen: false }),
-    onCancel: () => setState({ isOpen: false }),
+    onClose: () => {},
+    onCancel: () => {},
     itemsPerPage: 4,
     imageSize: 'large',
     withSearch: true,
     searchDebounceMs: 150,
 
-    dataSource: (searchQuery, offset, limit) =>
-      new Promise(resolve =>
-        setTimeout(() => {
-          const filtered = ITEMS.filter(({ title }) =>
-            title.toLowerCase().startsWith(searchQuery.toLowerCase()),
-          );
-
-          resolve({
-            items: filtered.slice(offset, offset + limit),
-            totalCount: filtered.length,
-          });
-        }, 2000),
-      ),
-  }),
+    dataSource: examples.DATA_SOURCE,
+  },
 
   exampleProps: {
     onOk: data => {
@@ -75,4 +71,36 @@ export default {
 
     subtitle: [{ label: 'simple text', value: 'A list of items go below' }],
   },
+
+  sections: [
+    header({}),
+    tabs([
+      tab({
+        title: 'Description',
+        sections: [
+          description(
+            ' Modal Selector is a modal pattern that enable the user to select one or multiple elements from a list, as well as the ability to search in the list in order to select a specific option.',
+          ),
+
+          importExample("import { AddItem } from 'wix-style-react';"),
+
+          divider(),
+
+          title('Examples'),
+
+          example({
+            title: 'Type',
+            text: 'single select / Multi-select',
+            source: examples.type,
+          }),
+        ],
+      }),
+
+      ...[
+        { title: 'API', sections: [api()] },
+        { title: 'Testkit', sections: [testkit()] },
+        { title: 'Playground', sections: [playground()] },
+      ].map(tab),
+    ]),
+  ],
 };
