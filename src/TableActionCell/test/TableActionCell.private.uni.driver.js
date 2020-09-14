@@ -5,7 +5,7 @@ import { iconButtonDriverFactory } from '../../IconButton/IconButton.uni.driver'
 
 export const tableActionCellPrivateUniDriverFactory = base => {
   const primaryActionPlaceholder = () =>
-    findByHook(base, dataHooks.tableActionCellPlaceholder);
+    findByHook(base, dataHooks.placeholder);
 
   const primaryActionPlaceholderDriver = iconButtonDriverFactory(
     primaryActionPlaceholder(),

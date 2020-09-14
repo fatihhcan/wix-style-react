@@ -14,9 +14,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
   //   await findByHook(base, dataHooks.tableActionCellVisibleActions);
 
   const getPrimaryActionButtonDriver = () =>
-    buttonDriverFactory(
-      findByHook(base, dataHooks.tableActionCellPrimaryAction),
-    );
+    buttonDriverFactory(findByHook(base, dataHooks.primaryAction));
 
   // const getVisibleActionTooltipDriver = actionIndex =>
   //   tooltipDriverFactory({
@@ -43,7 +41,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
   //   buttonDriverFactory(findByHook(getVisibleActionsWrapper(), dataHook));
 
   const getHiddenActionsPopoverMenuDriver = () =>
-    PopoverMenuDriver(findByHook(base, dataHooks.tableActionCellPopoverMenu));
+    PopoverMenuDriver(findByHook(base, dataHooks.popoverMenu));
 
   return {
     ...baseUniDriverFactory(base, body),
@@ -60,8 +58,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
       await getPrimaryActionButtonDriver().isButtonDisabled(),
 
     /** Get the number of the visible secondary actions */
-    getVisibleActionsCount: () =>
-      countByHook(base, dataHooks.tableActionCellVisibleAction),
+    getVisibleActionsCount: () => countByHook(base, dataHooks.visibleAction),
 
     /** Get the number of hidden secondary actions (in the <PopoverMenu/>, requires it to be open) */
     getHiddenActionsCount: () =>

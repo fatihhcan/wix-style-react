@@ -17,7 +17,7 @@ function renderPrimaryAction({ text, skin, onClick, disabled }) {
     <Button
       disabled={disabled}
       skin={skin}
-      dataHook={dataHooks.tableActionCellPrimaryAction}
+      dataHook={dataHooks.primaryAction}
       onClick={event => {
         onClick();
         // Making sure we don't also trigger onRowClick
@@ -44,9 +44,9 @@ function renderVisibleActions(actions) {
       },
       index,
     ) => (
-      <div key={index} data-hook={dataHooks.tableActionCellVisibleAction}>
+      <div key={index} data-hook={dataHooks.visibleAction}>
         <Tooltip
-          dataHook={dataHook || dataHooks.tableActionCellVisibleActionTooltip}
+          dataHook={dataHook || dataHooks.visibleActionTooltip}
           disabled={disabled && disabledDescription === ''}
           content={
             disabled && Boolean(disabledDescription)
@@ -74,7 +74,7 @@ function renderVisibleActions(actions) {
 function renderHiddenActions(actions, popoverMenuProps) {
   return (
     <PopoverMenu
-      dataHook={dataHooks.tableActionCellPopoverMenu}
+      dataHook={dataHooks.popoverMenu}
       appendTo="parent"
       placement="top"
       textSize="small"
@@ -90,7 +90,7 @@ function renderHiddenActions(actions, popoverMenuProps) {
           !divider ? (
             <PopoverMenu.MenuItem
               key={index}
-              dataHook={dataHook || dataHooks.tableActionCellPopoverMenuItem}
+              dataHook={dataHook || dataHooks.popoverMenuItem}
               prefixIcon={icon}
               onClick={() => onClick()}
               text={text}
@@ -106,7 +106,7 @@ function renderHiddenActions(actions, popoverMenuProps) {
 
 function renderPlaceholder() {
   return (
-    <IconButton dataHook={dataHooks.tableActionCellPlaceholder} skin="inverted">
+    <IconButton dataHook={dataHooks.placeholder} skin="inverted">
       <ChevronRight />
     </IconButton>
   );
