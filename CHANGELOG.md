@@ -16,9 +16,39 @@ Types of changes:
 
 ## Next
 ### Added
+- `<FunnelChart/>` - create new component [#5904](https://github.com/wix/wix-style-react/pull/5904)
+
+### Fixed:
+- `<Slider/>` - fix tooltip typography [#5974](https://github.com/wix/wix-style-react/pull/5974)
+
+### Breaking:
+- `<ModalSelectorLayout/>` - use new `<CustomModalLayout/>` [#5831](https://github.com/wix/wix-style-react/pull/5831), [#5972](https://github.com/wix/wix-style-react/pull/5972)
+
+## 9.10.0 - 2020-09-14
+### Added:
+- `<Ellipsis/>`- adding `maxLines` prop [#5885](https://github.com/wix/wix-style-react/pull/5885)
+
+### Changed:
+- `<PageHeader/>`- subtitle was changed to be max of two lines (with ellipsis) [#5964](https://github.com/wix/wix-style-react/pull/5964)
+- `<BaseModalLayout/>` - Fix button content type [#5966](https://github.com/wix/wix-style-react/pull/5966)
+
+### Fixed:
+- `<BaseModalLayout />` - support nodes as buttons' children [#5958](https://github.com/wix/wix-style-react/pull/5958)
+
+## 9.9.0 - 2020-09-10
+### Added
 - `<FontUpgrade/>` - [Testkit] Add isActive function [#5936](https://github.com/wix/wix-style-react/pull/5936)
 - `<RichTextInputArea/>` - add puppeteer support for enterText testkit method [#5930](https://github.com/wix/wix-style-react/pull/5930)
 - `<StatisticsWidget/>` - support content alignment using the alignItems prop [#5931](https://github.com/wix/wix-style-react/pull/5931)
+- `<StatisticsWidget/>` - show dashes for empty values [#5935](https://github.com/wix/wix-style-react/pull/5935)
+
+### fixed:
+- `<RadioGroup/>`, `<MessageModelLayout/>`, `<CustomModalLayout/>`, `<BaseModalLayout/>` - support using dir="rtl" instead of className="rtl" [#5941](https://github.com/wix/wix-style-react/pull/5941)
+- `<PageHeader/>`- fixing issue with back button on RTL [#5956](https://github.com/wix/wix-style-react/pull/5956)
+
+### Docs:
+- `<MessageModalLayout>` - move out from the WIP list [#5944](https://github.com/wix/wix-style-react/pull/5944)
+- `<BadgeSelect/>` - refactor story page and some improvements [#5957](https://github.com/wix/wix-style-react/pull/5957)
 
 ## 9.8.0 - 2020-09-07
 ### Added

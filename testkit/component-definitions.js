@@ -114,10 +114,18 @@ export default {
     },
   },
 
+  FunnelChart: {
+    props: {
+      data: [
+        { value: 1000, label: 'visits' },
+        { value: 800, label: 'views' },
+      ],
+    },
+  },
+
   BadgeSelect: {
     props: {
       options: [{ id: '0', skin: 'general', text: 'general' }],
-      selectedId: '0',
     },
   },
 
