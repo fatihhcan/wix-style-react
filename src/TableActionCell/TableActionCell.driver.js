@@ -4,6 +4,10 @@ import { dataHooks } from './constants';
 import buttonDriverFactory from '../Button/Button.legacy.driver';
 
 const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
+  const visibleActions = element.querySelectorAll(
+    `[data-hook="${dataHooks.visibleAction}"]`,
+  );
+
   const getPrimaryActionButtonDriver = () =>
     buttonDriverFactory({
       element: element.querySelector(
@@ -11,25 +15,19 @@ const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
       ),
     });
 
-  const visibleActions = element.querySelectorAll(
-    `[data-hook="${dataHooks.visibleAction}"]`,
-  );
+  const getVisibleActionTooltipDriver = actionIndex =>
+    tooltipDriverFactory({
+      element: element.querySelectorAll(
+        `[data-hook="${dataHooks.visibleActionTooltip}"]`,
+      )[actionIndex],
+      eventTrigger,
+    });
 
-  // const getVisibleActionTooltipDriver = actionIndex =>
-  //   tooltipDriverFactory({
-  //     element: getVisibleActionsWrapper().querySelectorAll(
-  //       `[data-hook="${dataHooks.visibleActionTooltip}"]`,
-  //     )[actionIndex],
-  //     eventTrigger,
-  //   });
-
-  // const getVisibleActionByDataHookTooltipDriver = dataHook =>
-  //   tooltipDriverFactory({
-  //     element: getVisibleActionsWrapper().querySelector(
-  //       `[data-hook="${dataHook}"]`,
-  //     ),
-  //     eventTrigger,
-  //   });
+  const getVisibleActionByDataHookTooltipDriver = dataHook =>
+    tooltipDriverFactory({
+      element: element.querySelector(`[data-hook="${dataHook}"]`),
+      eventTrigger,
+    });
 
   const getVisibleActionButtonDriver = actionIndex =>
     buttonDriverFactory({
@@ -65,9 +63,9 @@ const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
     getHiddenActionsCount: () =>
       getHiddenActionsPopoverMenuDriver().childrenCount(),
     /** Get the driver of a specific visible secondary action <Tooltip/> */
-    // getVisibleActionTooltipDriver,
+    getVisibleActionTooltipDriver,
     /** Get the driver of a specific visible secondary action <Tooltip/> by its specified dataHook */
-    // getVisibleActionByDataHookTooltipDriver,
+    getVisibleActionByDataHookTooltipDriver,
     /** Get the driver of a specific visible secondary action <Button/> */
     getVisibleActionButtonDriver,
     /** Get the driver of a specific visible secondary action <Button/> by its specified dataHook */

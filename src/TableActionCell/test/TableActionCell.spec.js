@@ -134,19 +134,19 @@ describe('Table Action Cell', () => {
       expect(
         await driver.getVisibleActionButtonDriver(0).getButtonTextContent(),
       ).toEqual('Icon 0');
-      // expect(
-      //   await driver
-      //     .getVisibleActionByDataHookButtonDriver('data-hook-for-1')
-      //     .getButtonTextContent(),
-      // ).toEqual('Icon 1');
+      expect(
+        await driver
+          .getVisibleActionByDataHookButtonDriver('data-hook-for-1')
+          .getButtonTextContent(),
+      ).toEqual('Icon 1');
 
-      // const tooltipDriver1 = await driver.getVisibleActionTooltipDriver(0);
-      // const tooltipDriver2 = await driver.getVisibleActionByDataHookTooltipDriver(
-      //   'data-hook-for-1',
-      // );
+      const tooltipDriver1 = await driver.getVisibleActionTooltipDriver(0);
+      const tooltipDriver2 = await driver.getVisibleActionByDataHookTooltipDriver(
+        'data-hook-for-1',
+      );
 
-      // expect(tooltipDriver1.getTooltipText()).toEqual('Action 0');
-      // expect(tooltipDriver2.getTooltipText()).toEqual('Action 1');
+      expect(tooltipDriver1.getTooltipText()).toEqual('Action 0');
+      expect(tooltipDriver2.getTooltipText()).toEqual('Action 1');
     });
 
     it('should put hidden secondary action in a PopoverMenu', async () => {
@@ -296,74 +296,74 @@ describe('Table Action Cell', () => {
         expect(actionTrigger).not.toHaveBeenCalled();
       });
 
-      // describe('when action is disabled', () => {
-      //   let disabledAction;
-      //   beforeEach(() => {
-      //     disabledAction = {
-      //       text: `Disabled Action`,
-      //       icon: <span>Icon</span>,
-      //       onClick: () => void 0,
-      //       disabled: true,
-      //     };
-      //   });
-      //   describe('when disabledDescription is supplied', () => {
-      //     it('should show the supplied description as tooltip', async () => {
-      //       disabledAction.disabledDescription = 'disabled item description';
-      //
-      //       const { driver } = render(
-      //         <TableActionCell
-      //           {...primaryActionProps()}
-      //           secondaryActions={[disabledAction]}
-      //           numOfVisibleSecondaryActions={1}
-      //         />,
-      //       );
-      //
-      //       const tooltipDriver = await driver.getVisibleActionTooltipDriver(0);
-      //       expect(tooltipDriver.getTooltipText()).toEqual(
-      //         'disabled item description',
-      //       );
-      //     });
-      //
-      //     // describe('when overriding tooltip content with tooltipProps', () => {
-      //     //   it('should show the supplied content as tooltip', async () => {
-      //     //     disabledAction.disabledDescription = 'disabled item description';
-      //     //     disabledAction.tooltipProps = {
-      //     //       content: 'Some custom tooltip content',
-      //     //     };
-      //     //
-      //     //     const { driver } = render(
-      //     //       <TableActionCell
-      //     //         {...primaryActionProps()}
-      //     //         secondaryActions={[disabledAction]}
-      //     //         numOfVisibleSecondaryActions={1}
-      //     //       />,
-      //     //     );
-      //     //
-      //     //     const tooltipDriver = await driver.getVisibleActionTooltipDriver(
-      //     //       0,
-      //     //     );
-      //     //     expect(tooltipDriver.getTooltipText()).toEqual(
-      //     //       'Some custom tooltip content',
-      //     //     );
-      //     //   });
-      //     // });
-      //   });
-      //
-      //   // describe('when disabledDescription is not supplied', () => {
-      //   //   it('should show action text as tooltip', async () => {
-      //   //     const { driver } = render(
-      //   //       <TableActionCell
-      //   //         {...primaryActionProps()}
-      //   //         secondaryActions={[disabledAction]}
-      //   //         numOfVisibleSecondaryActions={1}
-      //   //       />,
-      //   //     );
-      //   //
-      //   //     const tooltipDriver = await driver.getVisibleActionTooltipDriver(0);
-      //   //     expect(tooltipDriver.getTooltipText()).toEqual('Disabled Action');
-      //   //   });
-      //   // });
-      // });
+      describe('when action is disabled', () => {
+        let disabledAction;
+        beforeEach(() => {
+          disabledAction = {
+            text: `Disabled Action`,
+            icon: <span>Icon</span>,
+            onClick: () => void 0,
+            disabled: true,
+          };
+        });
+        describe('when disabledDescription is supplied', () => {
+          it('should show the supplied description as tooltip', async () => {
+            disabledAction.disabledDescription = 'disabled item description';
+
+            const { driver } = render(
+              <TableActionCell
+                {...primaryActionProps()}
+                secondaryActions={[disabledAction]}
+                numOfVisibleSecondaryActions={1}
+              />,
+            );
+
+            const tooltipDriver = await driver.getVisibleActionTooltipDriver(0);
+            expect(tooltipDriver.getTooltipText()).toEqual(
+              'disabled item description',
+            );
+          });
+
+          describe('when overriding tooltip content with tooltipProps', () => {
+            it('should show the supplied content as tooltip', async () => {
+              disabledAction.disabledDescription = 'disabled item description';
+              disabledAction.tooltipProps = {
+                content: 'Some custom tooltip content',
+              };
+
+              const { driver } = render(
+                <TableActionCell
+                  {...primaryActionProps()}
+                  secondaryActions={[disabledAction]}
+                  numOfVisibleSecondaryActions={1}
+                />,
+              );
+
+              const tooltipDriver = await driver.getVisibleActionTooltipDriver(
+                0,
+              );
+              expect(tooltipDriver.getTooltipText()).toEqual(
+                'Some custom tooltip content',
+              );
+            });
+          });
+        });
+
+        describe('when disabledDescription is not supplied', () => {
+          it('should show action text as tooltip', async () => {
+            const { driver } = render(
+              <TableActionCell
+                {...primaryActionProps()}
+                secondaryActions={[disabledAction]}
+                numOfVisibleSecondaryActions={1}
+              />,
+            );
+
+            const tooltipDriver = await driver.getVisibleActionTooltipDriver(0);
+            expect(tooltipDriver.getTooltipText()).toEqual('Disabled Action');
+          });
+        });
+      });
     });
   }
 });
