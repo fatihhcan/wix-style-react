@@ -12,6 +12,7 @@ require('../src/Accordion/docs/index.story');
 require('../src/AddItem/docs/index.story');
 require('../src/Animate/docs/index.story');
 require('../src/AnnouncementModalLayout/docs/index.story');
+require('../src/AreaChart/docs/index.story');
 require('../src/AudioPlayer/docs/index.story');
 require('../src/AutoComplete/docs/index.story');
 require('../src/AutoCompleteWithLabel/docs/index.story');
@@ -201,6 +202,3 @@ require('./PopoverMenu/index.story'); // 7.3 PopoverMenu
 // require('../src/CustomModalLayout/docs/design.story'); // 9.3 Custom Modal (WIP)
 require('./ModalMobileLayout/index.story'); // 9.5 Mobile Modal
 require('../src/MessageBox/docs');
-
-// TODO: move to correct position
-require('../src/AreaChart/docs/index.story');

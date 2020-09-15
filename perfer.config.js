@@ -4,6 +4,7 @@ const javascriptFiles = [
   ['Animate.bundle.min.js', 5],
   ['AnnouncementModalLayout.bundle.min.js', 48],
   ['AreaChart.bundle.min.js', 84],
+  ['AreaChart.min.css', 1],
   ['AudioPlayer.bundle.min.js', 53],
   ['AutoComplete.bundle.min.js', 71],
   ['AutoCompleteWithLabel.bundle.min.js', 69],
@@ -267,7 +268,6 @@ const cssFiles = [
   ['Tooltip.min.css', 2],
   ['VariableInput.min.css', 2],
   ['WarningIndicator.min.css', 2],
-  ['AreaChart.min.css', 1],
 ];
 
 const getJS = () =>
