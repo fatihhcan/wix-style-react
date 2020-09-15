@@ -37,20 +37,20 @@ export const tableActionCellUniDriverFactory = (base, body) => {
 
     /**
      * Get the driver of the primary action <Button/> from the action column
-     * @returns {Promise<string>} Title at item index
+     * @returns {Promise<buttonDriverFactory>}
      */
     getPrimaryActionButtonDriver,
 
     /**
      * Clicks the primary action button of the action column
-     * @returns {Promise<void>} Title at item index
+     * @returns {Promise<void>}
      */
     clickPrimaryActionButton: async () =>
       await getPrimaryActionButtonDriver().click(),
 
     /**
      * Checks whether the primary action button is disabled
-     * @returns {Promise<boolean>} Title at item index
+     * @returns {Promise<boolean>}
      */
     getIsPrimaryActionButtonDisabled: async () =>
       await getPrimaryActionButtonDriver().isButtonDisabled(),
@@ -71,14 +71,14 @@ export const tableActionCellUniDriverFactory = (base, body) => {
     /**
      * Gets a specific visible secondary action <Tooltip/> driver
      * @param {actionIndex} actionIndex
-     * @returns {Promise<tooltipDriverFactory>} Title at item index
+     * @returns {Promise<tooltipDriverFactory>}
      */
     getVisibleActionTooltipDriver,
 
     /**
      * Get the driver of a specific visible secondary action <Tooltip/> by its specified dataHook
      * @param {dataHook} tooltip dataHook
-     * @returns {Promise<tooltipDriverFactory>} Title at item index
+     * @returns {Promise<tooltipDriverFactory>}
      */
     getVisibleActionByDataHookTooltipDriver,
 
