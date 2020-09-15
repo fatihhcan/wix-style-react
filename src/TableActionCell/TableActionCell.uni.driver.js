@@ -70,7 +70,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
 
     /**
      * Gets a specific visible secondary action <Tooltip/> driver
-     * @param {actionIndex} action index
+     * @param {actionIndex} actionIndex
      * @returns {Promise<tooltipDriverFactory>} Title at item index
      */
     getVisibleActionTooltipDriver,
@@ -84,7 +84,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
 
     /**
      * Get the driver of a specific visible secondary action <Button/>
-     * @param {actionIndex} action index
+     * @param {actionIndex} actionIndex
      * @returns {Promise<buttonDriverFactory>}
      */
     getVisibleActionButtonDriver,
@@ -104,7 +104,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
 
     /**
      * Clicks on a visible secondary action
-     * @param {actionIndex} action index
+     * @param {actionIndex} actionIndex
      * @returns {Promise<void>}
      */
     clickVisibleAction: actionIndex =>
@@ -112,7 +112,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
 
     /**
      * Clicks on a visible secondary action by its specified dataHook
-     * @param {actionDataHook} action dataHook
+     * @param {actionDataHook} actionDataHook
      * @returns {Promise<void>}
      */
     clickVisibleActionByDataHook: actionDataHook =>
@@ -129,7 +129,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
 
     /**
      * Clicks on a hidden secondary action (requires the <PopoverMenu/> to be open)
-     * @param {actionIndex} action index
+     * @param {actionIndex} actionIndex
      * @returns {Promise<void>}
      */
     clickHiddenAction: actionIndex =>
@@ -137,7 +137,7 @@ export const tableActionCellUniDriverFactory = (base, body) => {
 
     /**
      * Clicks hidden action by data hook
-     * @param {actionDataHook} action dataHook
+     * @param {actionDataHook} actionDataHook
      * @returns {Promise<void>}
      */
     clickHiddenActionByDataHook: actionDataHook =>
