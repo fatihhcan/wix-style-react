@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Line, defaults } from 'react-chartjs-2';
 import throttle from 'lodash/throttle';
 
-import { formatToCompactNumber } from './utils/numberFormatters';
+import { formatToCompactNumber, calcPrecision } from './utils/numberFormatters';
 
 import {
   DATASET_PROPS,
@@ -51,7 +51,13 @@ class AreaChart extends React.PureComponent {
   };
 
   render() {
-    const { data, tooltipContent, dataHook, className } = this.props;
+    const {
+      data,
+      tooltipContent,
+      maxTicksLimit,
+      dataHook,
+      className,
+    } = this.props;
     const labels = (data || []).map(i => i.label);
     const dataset = (data || []).map(i => i.value);
 
@@ -88,13 +94,23 @@ class AreaChart extends React.PureComponent {
                 {
                   ticks: {
                     ...Y_AXES_TICKS_PROPS,
+                    maxTicksLimit,
                     fontColor: stVars.gridLineZeroLineColor,
-                    callback(value, index, values) {
-                      if (index === values.length - 1) {
-                        return;
-                      }
-                      return formatToCompactNumber(value).toLocaleLowerCase();
-                    },
+                    callback: (function() {
+                      let precision;
+                      return function(value, index, values) {
+                        if (index === values.length - 1) {
+                          return;
+                        }
+                        if (!precision) {
+                          precision = calcPrecision(values);
+                        }
+                        return formatToCompactNumber(
+                          value,
+                          precision,
+                        ).toLocaleLowerCase();
+                      };
+                    })(),
                   },
                   gridLines: {
                     tickMarkLength: -1,
@@ -157,8 +173,13 @@ AreaChart.propTypes = {
 
   /** Callback on tooltip content show event */
   onTooltipShow: PropTypes.func,
+
+  /** Maximum ticks allowed in Y axis */
+  maxTicksLimit: PropTypes.number,
 };
 
-AreaChart.defaultProps = {};
+AreaChart.defaultProps = {
+  maxTicksLimit: 5,
+};
 
 export default AreaChart;
