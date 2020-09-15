@@ -35,50 +35,111 @@ export const tableActionCellUniDriverFactory = (base, body) => {
   return {
     ...baseUniDriverFactory(base, body),
 
-    /** Get the driver of the primary action <Button/> from the action column */
+    /**
+     * Get the driver of the primary action <Button/> from the action column
+     * @returns {Promise<string>} Title at item index
+     */
     getPrimaryActionButtonDriver,
 
-    /** Click the primary action button from the action column */
+    /**
+     * Clicks the primary action button of the action column
+     * @returns {Promise<void>} Title at item index
+     */
     clickPrimaryActionButton: async () =>
       await getPrimaryActionButtonDriver().click(),
 
-    /** Get whether the primary action button is disabled */
+    /**
+     * Checks whether the primary action button is disabled
+     * @returns {Promise<boolean>} Title at item index
+     */
     getIsPrimaryActionButtonDisabled: async () =>
       await getPrimaryActionButtonDriver().isButtonDisabled(),
 
-    /** Get the number of the visible secondary actions */
+    /**
+     * Get the number of the visible secondary actions
+     * @returns {Promise<number>} number of visible secondary actions
+     */
     getVisibleActionsCount: () => countByHook(base, dataHooks.visibleAction),
 
-    /** Get the number of hidden secondary actions (in the <PopoverMenu/>, requires it to be open) */
+    /**
+     * Get the number of hidden secondary actions (in the <PopoverMenu/>, requires it to be open)
+     * @returns {Promise<number>} number of hidden secondary actions
+     */
     getHiddenActionsCount: () =>
       getHiddenActionsPopoverMenuDriver().childrenCount(),
-    /** Get the driver of a specific visible secondary action <Tooltip/> */
-    getVisibleActionTooltipDriver,
-    /** Get the driver of a specific visible secondary action <Tooltip/> by its specified dataHook */
-    getVisibleActionByDataHookTooltipDriver,
-    /** Get the driver of a specific visible secondary action <Button/> */
-    getVisibleActionButtonDriver,
-    /** Get the driver of a specific visible secondary action <Button/> by its specified dataHook */
-    getVisibleActionByDataHookButtonDriver,
-    /** Get the driver of the hidden secondary action <PopoverMenu/> */
-    getHiddenActionsPopoverMenuDriver,
-    /** Click an a visible secondary action */
-    clickVisibleAction: async actionIndex => {
-      const driver = await getVisibleActionButtonDriver(actionIndex);
-      return driver.click();
-    },
 
-    /** Click an a visible secondary action by its specified dataHook  */
+    /**
+     * Gets a specific visible secondary action <Tooltip/> driver
+     * @param {actionIndex} action index
+     * @returns {Promise<tooltipDriverFactory>} Title at item index
+     */
+    getVisibleActionTooltipDriver,
+
+    /**
+     * Get the driver of a specific visible secondary action <Tooltip/> by its specified dataHook
+     * @param {dataHook} tooltip dataHook
+     * @returns {Promise<tooltipDriverFactory>} Title at item index
+     */
+    getVisibleActionByDataHookTooltipDriver,
+
+    /**
+     * Get the driver of a specific visible secondary action <Button/>
+     * @param {actionIndex} action index
+     * @returns {Promise<buttonDriverFactory>}
+     */
+    getVisibleActionButtonDriver,
+
+    /**
+     * Gets a specific visible secondary action <Button/> driver by its specified dataHook
+     * @param {dataHook} button dataHook
+     * @returns {Promise<buttonDriverFactory>} visible action button driver
+     */
+    getVisibleActionByDataHookButtonDriver,
+
+    /**
+     * Gets the hidden secondary action <PopoverMenu/> driver
+     * @returns {Promise<PopoverMenuUniDriver>}
+     */
+    getHiddenActionsPopoverMenuDriver,
+
+    /**
+     * Clicks on a visible secondary action
+     * @param {actionIndex} action index
+     * @returns {Promise<void>}
+     */
+    clickVisibleAction: actionIndex =>
+      getVisibleActionButtonDriver(actionIndex).click(),
+
+    /**
+     * Clicks on a visible secondary action by its specified dataHook
+     * @param {actionDataHook} action dataHook
+     * @returns {Promise<void>}
+     */
     clickVisibleActionByDataHook: actionDataHook =>
       getVisibleActionByDataHookButtonDriver(actionDataHook).click(),
-    /** Click on the hidden secondary actions <PopoverMenu/> */
+
+    /**
+     * Clicks on the hidden secondary actions <PopoverMenu/>
+     * @returns {Promise<void>}
+     */
     clickPopoverMenu: () =>
       getHiddenActionsPopoverMenuDriver()
         .getTriggerElement(dataHooks.triggerElement)
         .click(),
-    /** Click on a hidden secondary action (requires the <PopoverMenu/> to be open) */
+
+    /**
+     * Clicks on a hidden secondary action (requires the <PopoverMenu/> to be open)
+     * @param {actionIndex} action index
+     * @returns {Promise<void>}
+     */
     clickHiddenAction: actionIndex =>
       getHiddenActionsPopoverMenuDriver().clickAtChild(actionIndex),
+
+    /**
+     * Clicks hidden action by data hook
+     * @param {actionDataHook} action dataHook
+     * @returns {Promise<void>}
+     */
     clickHiddenActionByDataHook: actionDataHook =>
       getHiddenActionsPopoverMenuDriver().clickAtChildByDataHook(
         actionDataHook,

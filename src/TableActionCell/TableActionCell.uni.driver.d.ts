@@ -1,8 +1,10 @@
 import { BaseUniDriver } from 'wix-ui-test-utils/base-driver';
 import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/Tooltip.driver';
 import { PopoverMenuUniDriver } from '../PopoverMenu/PopoverMenu.uni.driver';
+import { buttonDriverFactory} from '../Button/Button.uni.driver';
 
 export interface  TableActionCellUniDriver<T>  extends BaseUniDriver {
+  getPrimaryActionButtonDriver: () => Promise<ReturnType<typeof buttonDriverFactory>>;
   clickPrimaryActionButton: () => Promise<void>;
   getIsPrimaryActionButtonDisabled: () => Promise<boolean>;
   getVisibleActionsCount: () => Promise<number>;
