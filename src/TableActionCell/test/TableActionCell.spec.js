@@ -289,11 +289,11 @@ describe('Table Action Cell', () => {
           />,
         );
 
-        // const firstVisibleActionButton = driver.getVisibleActionButtonDriver(0);
-        // expect(await firstVisibleActionButton.isButtonDisabled()).toBe(true);
-        //
-        // await firstVisibleActionButton.click();
-        // expect(actionTrigger).not.toHaveBeenCalled();
+        const firstVisibleActionButton = driver.getVisibleActionButtonDriver(0);
+        expect(await firstVisibleActionButton.isButtonDisabled()).toBe(true);
+
+        await firstVisibleActionButton.click();
+        expect(actionTrigger).not.toHaveBeenCalled();
       });
 
       // describe('when action is disabled', () => {
