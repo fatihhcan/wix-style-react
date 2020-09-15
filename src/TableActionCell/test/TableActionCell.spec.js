@@ -131,9 +131,9 @@ describe('Table Action Cell', () => {
 
       expect(await driver.getVisibleActionsCount()).toEqual(2);
 
-      // expect(
-      //   await driver.getVisibleActionButtonDriver(0).getButtonTextContent(),
-      // ).toEqual('Icon 0');
+      expect(
+        await driver.getVisibleActionButtonDriver(0).getButtonTextContent(),
+      ).toEqual('Icon 0');
       // expect(
       //   await driver
       //     .getVisibleActionByDataHookButtonDriver('data-hook-for-1')

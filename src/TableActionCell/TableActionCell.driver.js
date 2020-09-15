@@ -31,21 +31,16 @@ const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
   //     eventTrigger,
   //   });
 
-  // const getVisibleActionButtonDriver = actionIndex => {
-  //
-  //   return buttonDriverFactory({
-  //     element: visibleActions[actionIndex].outerHTML,
-  //   });
-  //
-  // };
-  //
-  //
+  const getVisibleActionButtonDriver = actionIndex =>
+    buttonDriverFactory({
+      element: visibleActions[actionIndex],
+    });
+
   // const getVisibleActionByDataHookButtonDriver = dataHook =>
   //   buttonDriverFactory({
-  //     element: element.querySelector(`[data-hook="${dataHooks.visibleAction}"]`).parent.querySelector(
-  //       `[data-hook="${dataHook}"]`,
-  //     ),
-  //   });
+  //     element: element.querySelectorAll(
+  //       `[data-hook="${dataHooks.visibleAction}"]`,
+  //     ).parent.querySelector( `[data-hook="${dataHook}"]`)});
 
   const getHiddenActionsPopoverMenuDriver = () =>
     popoverMenuTestkitFactory({
@@ -75,7 +70,7 @@ const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
     /** Get the driver of a specific visible secondary action <Tooltip/> by its specified dataHook */
     // getVisibleActionByDataHookTooltipDriver,
     /** Get the driver of a specific visible secondary action <Button/> */
-    // getVisibleActionButtonDriver,
+    getVisibleActionButtonDriver,
     /** Get the driver of a specific visible secondary action <Button/> by its specified dataHook */
     // getVisibleActionByDataHookButtonDriver,
     /** Get the driver of the hidden secondary action <PopoverMenu/> */
