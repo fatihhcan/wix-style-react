@@ -1,8 +1,8 @@
 import React from 'react';
 import Star from 'wix-ui-icons-common/Star';
-import Download from 'wix-ui-icons-common/Download';
-import Duplicate from 'wix-ui-icons-common/Duplicate';
-import Print from 'wix-ui-icons-common/Print';
+import DownloadImportSmall from 'wix-ui-icons-common/DownloadImportSmall';
+import DuplicateSmall from 'wix-ui-icons-common/DuplicateSmall';
+import PrintSmall from 'wix-ui-icons-common/PrintSmall';
 
 import { classes } from '../TableActionCell.story.st.css';
 
@@ -22,22 +22,22 @@ const Example = () => (
       secondaryActions={[
         {
           text: 'Star',
-          icon: <Star />,
+          icon: <Star size="small" />,
           onClick: () => window.alert('Star action was triggered.'),
         },
         {
           text: 'Download',
-          icon: <Download />,
+          icon: <DownloadImportSmall />,
           onClick: () => window.alert('Download action was triggered.'),
         },
         {
           text: 'Duplicate',
-          icon: <Duplicate />,
+          icon: <DuplicateSmall />,
           onClick: () => window.alert('Duplicate action was triggered.'),
         },
         {
           text: 'Print',
-          icon: <Print />,
+          icon: <PrintSmall />,
           onClick: () => window.alert('Print action was triggered.'),
         },
       ]}
