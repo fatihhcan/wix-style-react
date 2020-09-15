@@ -3,6 +3,9 @@ import * as React from 'react';
 export interface AreaChartProps {
   dataHook?: string;
   className?: string;
+  data: IDatasetItem[];
+  tooltipContent?(item: IDatasetItem, index: number): string | string[];
+  onTooltipShow?(item: IDatasetItem): void;
 }
 
 export interface IDatasetItem {
@@ -10,4 +13,4 @@ export interface IDatasetItem {
   label: string;
 }
 
-export default class AreaChart extends React.PureComponent<AreaChartProps>{}
+export default class AreaChart extends React.PureComponent<AreaChartProps> {}

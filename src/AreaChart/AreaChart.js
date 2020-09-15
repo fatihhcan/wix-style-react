@@ -51,7 +51,7 @@ class AreaChart extends React.PureComponent {
   };
 
   render() {
-    const { data, xTickGap, tooltipContent, dataHook, className } = this.props;
+    const { data, tooltipContent, dataHook, className } = this.props;
     const labels = (data || []).map(i => i.label);
     const dataset = (data || []).map(i => i.value);
 
@@ -81,17 +81,6 @@ class AreaChart extends React.PureComponent {
                     padding: 5,
                     fontColor: stVars.gridLineZeroLineColor,
                     maxRotation: 0,
-                    callback(value, index, values) {
-                      if (
-                        values.length > xTickGap &&
-                        index !== values.length - 1 &&
-                        index % xTickGap
-                      ) {
-                        return '';
-                      }
-
-                      return value;
-                    },
                   },
                 },
               ],
@@ -116,13 +105,17 @@ class AreaChart extends React.PureComponent {
             },
             tooltips: {
               ...TOOLTIP_PROPS,
+              enabled: !!tooltipContent,
               custom: this.onMouseMove,
               callbacks: {
                 title: () => '',
                 label: tooltipItem => {
-                  return tooltipContent(
-                    [...data][tooltipItem.index],
-                    tooltipItem.index,
+                  return (
+                    tooltipContent &&
+                    tooltipContent(
+                      [...data][tooltipItem.index],
+                      tooltipItem.index,
+                    )
                   );
                 },
               },
@@ -146,10 +139,26 @@ AreaChart.propTypes = {
 
   /** A css class to be applied to the component's root element */
   className: PropTypes.string,
+
+  /**
+   * Array of Areat Chart items
+   * * `value` - Item's value.
+   * * `label` - A Short label under the value.
+   */
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+
+  /** Tooltip content template function*/
+  tooltipContent: PropTypes.func,
+
+  /** Callback on tooltip content show event */
+  onTooltipShow: PropTypes.func,
 };
 
-AreaChart.defaultProps = {
-  xTickGap: 1,
-};
+AreaChart.defaultProps = {};
 
 export default AreaChart;
