@@ -187,16 +187,16 @@ describe('Table Action Cell', () => {
         />,
       );
 
-      // await driver.clickVisibleAction(0);
-      // await driver.clickVisibleActionByDataHook('data-hook-for-1');
+      await driver.clickVisibleAction(0);
+      await driver.clickVisibleActionByDataHook('data-hook-for-1');
 
-      // await driver.clickPopoverMenu();
-      // await eventually(() => driver.clickHiddenAction(0));
-      //
-      // await driver.clickPopoverMenu();
-      // await eventually(
-      //   async () => await driver.clickHiddenActionByDataHook('data-hook-for-3'),
-      // );
+      await driver.clickPopoverMenu();
+      await eventually(() => driver.clickHiddenAction(0));
+
+      await driver.clickPopoverMenu();
+      await eventually(
+        async () => await driver.clickHiddenActionByDataHook('data-hook-for-3'),
+      );
 
       await eventually(() =>
         actionTriggers.forEach(async actionTrigger => {
