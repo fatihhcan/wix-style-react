@@ -8,5 +8,6 @@ export const dataHooks = {
   popoverMenu: `${tableActionCellPrefix}-popover-menu`,
   popoverMenuItem: `${tableActionCellPrefix}-popover-menu-item`,
   visibleAction: `${tableActionCellPrefix}-visible-action`,
+  visibleActionsWrapper: `${tableActionCellPrefix}-visible-actions-wrapper`,
   visibleActionButton: `${tableActionCellPrefix}-visible-action-button`,
 };
