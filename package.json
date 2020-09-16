@@ -209,6 +209,7 @@
     "color": "^2.0.1",
     "create-react-context": "^0.3.0",
     "css-element-queries": "^1.2.3",
+    "d3": "^6.1.1",
     "date-fns": "^2.15.0",
     "difference": "^1.0.2",
     "dnd-core": "^2.6.0",

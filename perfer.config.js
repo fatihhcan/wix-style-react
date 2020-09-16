@@ -151,6 +151,7 @@ const javascriptFiles = [
   ['VerticalTabs.bundle.min.js', 38],
   ['VerticalTabsItem.bundle.min.js', 38],
   ['WarningIndicator.bundle.min.js', 40],
+  ['SparklineChart.bundle.min.js', 10],
 ];
 
 const cssFiles = [
@@ -266,6 +267,7 @@ const cssFiles = [
   ['Tooltip.min.css', 2],
   ['VariableInput.min.css', 2],
   ['WarningIndicator.min.css', 2],
+  ['SparklineChart.min.css', 1],
 ];
 
 const getJS = () =>
