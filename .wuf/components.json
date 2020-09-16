@@ -350,6 +350,9 @@
   "SegmentedToggle": {
     "path": "src/SegmentedToggle"
   },
+  "SelectableAccordion": {
+    "path": "src/SelectableAccordion"
+  },
   "Selector": {
     "path": "src/Selector",
     "missingFiles": [

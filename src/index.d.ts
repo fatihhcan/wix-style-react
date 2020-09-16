@@ -323,6 +323,9 @@ export * from './SegmentedToggle';
 export { default as Selector } from './Selector';
 export * from './Selector';
 
+export { default as SelectableAccordion } from './SelectableAccordion';
+export * from './SelectableAccordion';
+
 export { default as SidePanel } from './SidePanel';
 export * from './SidePanel';
 
