@@ -12,7 +12,20 @@ describe(AreaChart.displayName, () => {
   });
 
   it('should render', async () => {
-    const { driver } = render(<AreaChart />);
+    const { driver } = render(
+      <AreaChart
+        data={[
+          {
+            value: 5698,
+            label: '12/9',
+          },
+          {
+            value: 1170,
+            label: '13/9',
+          },
+        ]}
+      />,
+    );
 
     expect(await driver.exists()).toBe(true);
   });
