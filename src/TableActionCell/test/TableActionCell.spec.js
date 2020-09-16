@@ -363,20 +363,32 @@ describe('Table Action Cell', () => {
           });
         });
 
-        // describe('when disabledDescription is not supplied', () => {
-        //   it('should show action text as tooltip', async () => {
-        //     const { driver } = render(
-        //       <TableActionCell
-        //         {...primaryActionProps()}
-        //         secondaryActions={[disabledAction]}
-        //         numOfVisibleSecondaryActions={1}
-        //       />,
-        //     );
-        //
-        //     const tooltipDriver = await driver.getVisibleActionTooltipDriver(0);
-        //     expect(tooltipDriver.getTooltipText()).toEqual('Disabled Action');
-        //   });
-        // });
+        describe('when disabledDescription is not supplied', () => {
+          it('should show action text as tooltip', async () => {
+            const secondaryActions = [
+              {
+                text: `Disabled Action`,
+                icon: <span>Icon</span>,
+                onClick: () => void 0,
+                disabled: true,
+              },
+            ];
+
+            const { driver } = render(
+              <TableActionCell
+                {...primaryActionProps()}
+                secondaryActions={secondaryActions}
+                numOfVisibleSecondaryActions={1}
+              />,
+            );
+
+            const tooltipDriver = await driver.getVisibleActionTooltipDriver(0);
+            await tooltipDriver.mouseEnter();
+            expect(await tooltipDriver.getTooltipText()).toEqual(
+              'Disabled Action',
+            );
+          });
+        });
       });
     });
   }
