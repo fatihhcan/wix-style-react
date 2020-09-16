@@ -3,7 +3,7 @@ import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/To
 import { PopoverMenuUniDriver } from '../PopoverMenu/PopoverMenu.uni.driver';
 import { buttonDriverFactory} from '../Button/Button.uni.driver';
 
-export interface  TableActionCellUniDriver<T>  extends BaseUniDriver {
+export interface  TableActionCellUniDriver  extends BaseUniDriver {
   getPrimaryActionButtonDriver: () => Promise<ReturnType<typeof buttonDriverFactory>>;
   clickPrimaryActionButton: () => Promise<void>;
   getIsPrimaryActionButtonDisabled: () => Promise<boolean>;
