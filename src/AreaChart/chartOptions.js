@@ -55,7 +55,6 @@ export const TOOLTIP_PROPS = {
   yAlign: 'bottom',
   displayColors: false,
   bodyFontSize: 14,
-  bodyFontFamily: 'Madefor',
   bodySpacing: 4,
   cornerRadius: 8,
 };

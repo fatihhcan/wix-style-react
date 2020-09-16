@@ -15,7 +15,7 @@ import {
 
 import { st, classes, stVars } from './AreaChart.st.css';
 
-defaults.global.defaultFontFamily = 'Madefor';
+defaults.global.defaultFontFamily = 'Madefor, Helvetica Neue';
 
 /** An area chart is a way of plotting data points on a line. Often, it is used to show trend data */
 class AreaChart extends React.PureComponent {
