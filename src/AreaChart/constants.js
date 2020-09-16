@@ -1,4 +1,1 @@
-export const dataHooks = {
-  areaChartCount: 'areaChart-count',
-  areaChartButton: 'areaChart-button',
-};
+export const dataHooks = {};
