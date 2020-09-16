@@ -16,10 +16,11 @@ export const tableActionCellUniDriverFactory = (base, body) => {
   const getVisibleActionTooltipDriver = actionIndex =>
     tooltipDriverFactory(
       findByHookAtIndex(base, dataHooks.visibleActionTooltip, actionIndex),
+      body,
     );
 
   const getVisibleActionByDataHookTooltipDriver = dataHook =>
-    tooltipDriverFactory(findByHook(base, dataHook));
+    tooltipDriverFactory(findByHook(base, dataHook), body);
 
   const getVisibleActionButtonDriver = actionIndex =>
     buttonDriverFactory(
