@@ -369,7 +369,7 @@ describe('Table Action Cell', () => {
               {
                 text: actionText,
                 icon: <span>Icon</span>,
-                onClick: () => void 0,
+                onClick: () => {},
                 disabled: true,
               },
             ];
