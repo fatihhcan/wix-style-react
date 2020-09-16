@@ -301,6 +301,7 @@ describe('Table Action Cell', () => {
 
       describe('when action is disabled', () => {
         describe('when disabledDescription is supplied', () => {
+          const disabledDescription = 'disabled item description';
           it('should show the supplied description as tooltip', async () => {
             const secondaryActions = [
               {
@@ -308,7 +309,7 @@ describe('Table Action Cell', () => {
                 icon: <span>Icon</span>,
                 onClick: () => {},
                 disabled: true,
-                disabledDescription: 'disabled item description',
+                disabledDescription,
               },
             ];
 
@@ -321,26 +322,24 @@ describe('Table Action Cell', () => {
             );
 
             const tooltipDriver = await driver.getVisibleActionTooltipDriver(0);
-
             await tooltipDriver.mouseEnter();
 
             expect(await tooltipDriver.getTooltipText()).toEqual(
-              'disabled item description',
+              disabledDescription,
             );
           });
 
           describe('when overriding tooltip content with tooltipProps', () => {
             it('should show the supplied content as tooltip', async () => {
+              const tooltipContent = 'Some custom tooltip content';
               const secondaryActions = [
                 {
                   text: `Disabled Action`,
                   icon: <span>Icon</span>,
                   onClick: () => {},
                   disabled: true,
-                  disabledDescription: 'disabled item description',
-                  tooltipProps: {
-                    content: 'Some custom tooltip content',
-                  },
+                  disabledDescription,
+                  tooltipProps: { content: tooltipContent },
                 },
               ];
 
@@ -357,7 +356,7 @@ describe('Table Action Cell', () => {
               );
               await tooltipDriver.mouseEnter();
               expect(await tooltipDriver.getTooltipText()).toEqual(
-                'Some custom tooltip content',
+                tooltipContent,
               );
             });
           });
@@ -365,9 +364,10 @@ describe('Table Action Cell', () => {
 
         describe('when disabledDescription is not supplied', () => {
           it('should show action text as tooltip', async () => {
+            const actionText = `Disabled Action`;
             const secondaryActions = [
               {
-                text: `Disabled Action`,
+                text: actionText,
                 icon: <span>Icon</span>,
                 onClick: () => void 0,
                 disabled: true,
@@ -384,9 +384,8 @@ describe('Table Action Cell', () => {
 
             const tooltipDriver = await driver.getVisibleActionTooltipDriver(0);
             await tooltipDriver.mouseEnter();
-            expect(await tooltipDriver.getTooltipText()).toEqual(
-              'Disabled Action',
-            );
+
+            expect(await tooltipDriver.getTooltipText()).toEqual(actionText);
           });
         });
       });
