@@ -7,12 +7,40 @@ import * as enzyme from 'enzyme';
 import * as puppeteer from 'puppeteer';
 
 function areaChartWithMandatoryProps() {
-  return <AreaChart />;
+  return (
+    <AreaChart
+      data={[
+        {
+          value: 5698,
+          label: '12/9',
+        },
+        {
+          value: 1170,
+          label: '13/9',
+        },
+      ]}
+    />
+  );
 }
 
 function areaChartWithAllProps() {
   return (
     <AreaChart
+      data={[
+        {
+          value: 5698,
+          label: '12/9',
+        },
+        {
+          value: 1170,
+          label: '13/9',
+        },
+      ]}
+      tooltipContent={(item, index) => {
+        return [`${item.label}`, `${item.value}$ from your orders`];
+      }}
+      onTooltipShow={() => console.log('showing tooltip')}
+      maxYTicksLimit={6}
       dataHook="dataHook"
       className="className"
     />
