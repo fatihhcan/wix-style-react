@@ -4,9 +4,8 @@ import { dataHooks } from './constants';
 import buttonDriverFactory from '../Button/Button.legacy.driver';
 
 const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
-  const visibleActions = element.querySelectorAll(
-    `[data-hook="${dataHooks.visibleAction}"]`,
-  );
+  const visibleActions = () =>
+    element.querySelectorAll(`[data-hook="${dataHooks.visibleAction}"]`);
 
   const getPrimaryActionButtonDriver = () =>
     buttonDriverFactory({
@@ -31,7 +30,7 @@ const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
 
   const getVisibleActionButtonDriver = actionIndex =>
     buttonDriverFactory({
-      element: visibleActions[actionIndex],
+      element: visibleActions()[actionIndex],
     });
 
   const getVisibleActionByDataHookButtonDriver = dataHook =>
@@ -58,7 +57,7 @@ const tableActionCellDriverFactory = ({ element, wrapper, eventTrigger }) => {
     getIsPrimaryActionButtonDisabled: () =>
       getPrimaryActionButtonDriver().isButtonDisabled(),
     /** Get the number of the visible secondary actions */
-    getVisibleActionsCount: () => visibleActions.length,
+    getVisibleActionsCount: () => visibleActions().length,
     /** Get the number of hidden secondary actions (in the <PopoverMenu/>, requires it to be open) */
     getHiddenActionsCount: () =>
       getHiddenActionsPopoverMenuDriver().childrenCount(),
