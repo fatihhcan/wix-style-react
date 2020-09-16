@@ -96,9 +96,9 @@ class AreaChart extends React.PureComponent {
                     ...Y_AXES_TICKS_PROPS,
                     maxTicksLimit,
                     fontColor: stVars.gridLineZeroLineColor,
-                    callback: (function() {
+                    callback: (() => {
                       let precision;
-                      return function(value, index, values) {
+                      return (value, index, values) => {
                         if (index === values.length - 1) {
                           return;
                         }
