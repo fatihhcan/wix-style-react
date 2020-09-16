@@ -32,7 +32,7 @@ export default {
   componentProps: {
     data: [
       {
-        value: 5675,
+        value: 5678,
         label: 'April',
       },
       {
