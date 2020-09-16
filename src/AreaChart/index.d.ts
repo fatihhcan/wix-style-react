@@ -6,6 +6,7 @@ export interface AreaChartProps {
   data: IDatasetItem[];
   tooltipContent?(item: IDatasetItem, index: number): string | string[];
   onTooltipShow?(item: IDatasetItem): void;
+  maxYTicksLimit?: number;
 }
 
 export interface IDatasetItem {

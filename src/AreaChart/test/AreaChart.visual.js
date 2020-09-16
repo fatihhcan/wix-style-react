@@ -448,13 +448,13 @@ const tests = [
     describe: 'minimal data (2 data points)',
     its: [
       {
-        it: 'default maxTicksLimit',
+        it: 'default maxYTicksLimit',
         props: {},
       },
       {
-        it: 'maxTicksLimit: 10',
+        it: 'maxYTicksLimit: 10',
         props: {
-          maxTicksLimit: 10,
+          maxYTicksLimit: 10,
         },
       },
     ],
@@ -463,16 +463,16 @@ const tests = [
     describe: 'over week data (7 data points)',
     its: [
       {
-        it: 'default maxTicksLimit',
+        it: 'default maxYTicksLimit',
         props: {
           data: overWeekData,
         },
       },
       {
-        it: 'maxTicksLimit: 10',
+        it: 'maxYTicksLimit: 10',
         props: {
           data: overWeekData,
-          maxTicksLimit: 10,
+          maxYTicksLimit: 10,
         },
       },
     ],
@@ -481,17 +481,17 @@ const tests = [
     describe: 'over month data (30 data points)',
     its: [
       {
-        it: 'default maxTicksLimit',
+        it: 'default maxYTicksLimit',
         props: {
           ...commonProps,
           data: overMonthData,
         },
       },
       {
-        it: 'maxTicksLimit: 10',
+        it: 'maxYTicksLimit: 10',
         props: {
           data: overMonthData,
-          maxTicksLimit: 10,
+          maxYTicksLimit: 10,
         },
       },
     ],
@@ -500,17 +500,17 @@ const tests = [
     describe: 'over 2 months data (61 data points)',
     its: [
       {
-        it: 'default maxTicksLimit',
+        it: 'default maxYTicksLimit',
         props: {
           ...commonProps,
           data: overTwoMonthsData,
         },
       },
       {
-        it: 'maxTicksLimit: 10',
+        it: 'maxYTicksLimit: 10',
         props: {
           data: overTwoMonthsData,
-          maxTicksLimit: 10,
+          maxYTicksLimit: 10,
         },
       },
     ],
@@ -519,15 +519,15 @@ const tests = [
     describe: 'combining non-compact numbers on y axis',
     its: [
       {
-        it: 'default maxTicksLimit',
+        it: 'default maxYTicksLimit',
         props: {
           data: nonCompactOnYAxisData,
         },
       },
       {
-        it: 'maxTicksLimit: 10 ',
+        it: 'maxYTicksLimit: 10 ',
         props: {
-          maxTicksLimit: 10,
+          maxYTicksLimit: 10,
           data: nonCompactOnYAxisData,
         },
       },
@@ -537,7 +537,7 @@ const tests = [
     describe: 'no tooltips',
     its: [
       {
-        it: 'default maxTicksLimit',
+        it: 'default maxYTicksLimit',
         props: {
           ...commonProps,
           tooltipContent: null,

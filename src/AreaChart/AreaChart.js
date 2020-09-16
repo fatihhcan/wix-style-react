@@ -54,7 +54,7 @@ class AreaChart extends React.PureComponent {
     const {
       data,
       tooltipContent,
-      maxTicksLimit,
+      maxYTicksLimit,
       dataHook,
       className,
     } = this.props;
@@ -94,7 +94,7 @@ class AreaChart extends React.PureComponent {
                 {
                   ticks: {
                     ...Y_AXES_TICKS_PROPS,
-                    maxTicksLimit,
+                    maxTicksLimit: maxYTicksLimit,
                     fontColor: stVars.gridLineZeroLineColor,
                     callback: (() => {
                       let precision;
@@ -175,11 +175,11 @@ AreaChart.propTypes = {
   onTooltipShow: PropTypes.func,
 
   /** Maximum ticks allowed in Y axis */
-  maxTicksLimit: PropTypes.number,
+  maxYTicksLimit: PropTypes.number,
 };
 
 AreaChart.defaultProps = {
-  maxTicksLimit: 5,
+  maxYTicksLimit: 5,
 };
 
 export default AreaChart;
