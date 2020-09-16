@@ -136,7 +136,7 @@ const TableActionCell = props => {
 
       {visibleActions.length > 0 && (
         <HoverSlot
-          data-hook={dataHooks.visibleActions}
+          data-hook={dataHooks.visibleActionsWrapper}
           display={alwaysShowSecondaryActions ? 'always' : 'onHover'}
         >
           {renderVisibleActions(visibleActions)}
